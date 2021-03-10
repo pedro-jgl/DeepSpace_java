@@ -17,7 +17,7 @@ public class Weapon {
         this.uses = s.uses;
     }
     
-    float getWeaponType(){
+    WeaponType getWeaponType(){
         return type;
     }
     

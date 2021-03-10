@@ -7,6 +7,6 @@ package javapaquete;
 
 
 public enum CombatResult {
-    {ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS;
+    ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS;
     
 }
