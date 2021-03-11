@@ -1,5 +1,5 @@
 # VSCProjects
 ## Proyecto DeepSpace
-[] Este proyecto está escrito en java.
-[] Añadir el repositorio a Virtual Code Studio.
-[] Una vez hecho algún cambio se puede sincronizar con este repositorio.
+* Escrito en java.
+* Añadir el repositorio a Virtual Code Studio.
+* Una vez hecho algún cambio en el IDE, se puede sincronizar con este repositorio.
