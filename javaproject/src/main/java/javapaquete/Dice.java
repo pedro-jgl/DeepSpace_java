@@ -9,7 +9,7 @@ public class Dice {
     private final float NWEAPONSPROB;
     private final float FIRSTSHOTPROB;
 
-    private double generator;
+    private double generator; //Debe ser un Random, si no, sería generar un número aleatorio una vez y siemrpe es igual en todos los métodos, y no debe de ser así
     
 
     Dice(){
