@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package javapaquete;
-
+//Borrar enum??
 /**
  *
  * @author german_padua
