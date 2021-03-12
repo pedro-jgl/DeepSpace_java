@@ -11,10 +11,12 @@ public class Weapon {
         this.uses = uses;
     }
 
+    //Implementar como se explico en clase??
     Weapon(Weapon s){
-        this.name = s.name;
-        this.type =  s.type;
-        this.uses = s.uses;
+        //this.name = s.name;
+        //this.type =  s.type;
+        //this.uses = s.uses;
+        this (s.name,s.type,s.uses);
     }
     
     WeaponType getWeaponType(){
