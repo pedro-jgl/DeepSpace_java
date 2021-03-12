@@ -9,21 +9,23 @@ public class Dice {
     private final float NWEAPONSPROB;
     private final float FIRSTSHOTPROB;
 
-    private double generator; //Debe ser un Random, si no, sería generar un número aleatorio una vez y siemrpe es igual en todos los métodos, y no debe de ser así
+    private Random generator;
+    //private double generator; //Debe ser una instancia de la clase Random (si no, una vez generado el objeto, siempre tiene la misma probabilidad en toda la partida)
     
 
     Dice(){
-        Random generator = new Random();
-
+        //Random generator = new Random();
         NHANGARSPROB= 0.25f;
         NSHIELDSPROB= 0.25f;
         NWEAPONSPROB= 0.33f;
         FIRSTSHOTPROB= 0.5f;
-        this.generator = generator.nextDouble();
+        //this.generator = generator.nextDouble();
     }
 
     int  initWithNHangar(){
-        if(this.generator < NHANGARSPROB){
+        double prob = this.generator.nextDouble();
+
+        if(prob < NHANGARSPROB){
             return 0;
         }else{
             return 1;
@@ -31,12 +33,13 @@ public class Dice {
     }
 
     int initWithNWeapons(){
-        final float PROB1 = 1-2*NWEAPONSPROB;
-        final float PROB2 = PROB1 + ( (1 - PROB1) / 2 );
+        final float PROB_CASO1 = 1-2*NWEAPONSPROB;
+        final float PROB_CASO2 = PROB_CASO1 + ( (1 - PROB_CASO1) / 2 );
+        double prob = this.generator.nextDouble();
 
-        if(this.generator <= PROB1){
+        if(prob <= PROB_CASO1){
             return 3;
-        }else if (this.generator <= PROB2){
+        }else if (prob <= PROB_CASO2){
             return 1;
         }else{
             return 2;
