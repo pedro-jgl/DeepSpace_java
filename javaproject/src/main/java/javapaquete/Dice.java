@@ -14,17 +14,17 @@ public class Dice {
     
 
     Dice(){
-
         NHANGARSPROB= 0.25f;
         NSHIELDSPROB= 0.25f;
         NWEAPONSPROB= 0.33f;
         FIRSTSHOTPROB= 0.5f;
+        this.generator = new Random();
     }
 
-    int  initWithNHangar(){
+    int initWithNHangar(){
         double prob = this.generator.nextDouble();
 
-        if(prob < NHANGARSPROB){
+        if(prob <= NHANGARSPROB){
             return 0;
         }else{
             return 1;
@@ -44,4 +44,42 @@ public class Dice {
             return 2;
         }
     }
+
+    int initWithNShields(){
+        double prob = this.generator.nextDouble();
+
+        if (prob <= NSHIELDSPROB){
+            return 0;
+        }else{
+            return 1;
+        }
+    }
+
+    int whoStarts(int nPlayers){
+        int player = this.generator.nextInt(nPlayers);
+        player++;
+        return player;
+    }
+
+    GameCharacter firstShot(){
+        double prob = this.generator.nextDouble();
+        GameCharacter firstshot = GameCharacter.SPACESTATION;
+
+        if (prob > FIRSTSHOTPROB){
+            firstshot = GameCharacter.ENEMYSTARSHIP;
+        }
+
+        return firstshot;
+    }
+
+    boolean spaceStationMoves(float speed){
+        double prob = this.generator.nextDouble();
+        //Comprobar excepción??
+
+        if(prob <= speed){
+            return true;
+        }else{
+            return false;
+        }
+    }      
 }
