@@ -13,9 +13,6 @@ public class SuppliesPackage {
 
     //Implementar como se explicó en clase??
     SuppliesPackage(SuppliesPackage s){
-        //this.ammoPower = s.ammoPower;
-        //this.ammoPower = s.fuelUnits;
-        //this.shieldPower = s.shieldPower;
         this (s.ammoPower,s.fuelUnits,s.shieldPower);
     }
 

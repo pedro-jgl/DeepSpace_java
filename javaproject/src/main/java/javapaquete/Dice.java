@@ -10,16 +10,15 @@ public class Dice {
     private final float FIRSTSHOTPROB;
 
     private Random generator;
-    //private double generator; //Debe ser una instancia de la clase Random (si no, una vez generado el objeto, siempre tiene la misma probabilidad en toda la partida)
+    
     
 
     Dice(){
-        //Random generator = new Random();
+
         NHANGARSPROB= 0.25f;
         NSHIELDSPROB= 0.25f;
         NWEAPONSPROB= 0.33f;
         FIRSTSHOTPROB= 0.5f;
-        //this.generator = generator.nextDouble();
     }
 
     int  initWithNHangar(){
