@@ -1,4 +1,4 @@
-package javapaquete;
+package Proyecto1;
 
 public enum WeaponType {
     LASER(2.0f), 

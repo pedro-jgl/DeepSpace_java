@@ -1,4 +1,4 @@
-package javapaquete;
+package Proyecto1;
 
 public class TestP1 {
     public static void main(String[] args){

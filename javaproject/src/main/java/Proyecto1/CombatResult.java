@@ -1,4 +1,4 @@
-package javapaquete;
+package Proyecto1;
 
 
 public enum CombatResult {
