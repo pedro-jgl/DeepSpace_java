@@ -80,7 +80,7 @@ public class TestP1 {
                     break;
             }
             
-            if(dado.spaceStationMoves(SPEED) == true)
+            if(dado.spaceStationMoves(SPEED))
                 semueve ++;
             
             if(dado.firstShot() == GameCharacter.SPACESTATION)
