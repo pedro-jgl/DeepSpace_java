@@ -3,7 +3,7 @@ package deepspace;
 public class TestP1 {
     public static void main(String[] args){
         final int VECES_A_TIRAR = 100;
-        final int PLAYERS = 3;  
+        final int PLAYERS = 3;
         final float SPEED = 0.25f;
         
         Dice dado1 = new Dice();
