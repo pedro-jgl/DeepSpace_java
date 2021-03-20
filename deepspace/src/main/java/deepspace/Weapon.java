@@ -41,4 +41,13 @@ public class Weapon {
 
     }
 
+    public String toString() {
+        String cadena = "Name: " + name + "\nType: " + getType() + "\nPower: " + power() + "\nUses: " + getUses();
+        
+        return cadena;
+    }
+
+    WeaponToUI getUIVersion(){
+        return new WeaponToUI(this);
+    }
 }

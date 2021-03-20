@@ -81,5 +81,13 @@ public class Dice {
         }else{
             return false;
         }
-    }      
+    }
+    
+    public String toString() {
+        String cadena = "NHANGARSPROB: " + NHANGARSPROB +
+        "\nNSHIELDSPROB: " + NSHIELDSPROB + "\nNWEAPONSPROB: " + NWEAPONSPROB + 
+        "\nFIRSTSHOTPROB: " + FIRSTSHOTPROB; 
+
+        return cadena;
+    }
 }

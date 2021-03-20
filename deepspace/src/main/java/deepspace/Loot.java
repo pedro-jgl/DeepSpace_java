@@ -37,5 +37,14 @@ public class Loot {
         return nMedals;
     }
 
-    
+    public String toString() {
+        String cadena = "NSupplies: " + getNSupplies() + "\n NShields: " + getNShields() + 
+        "\nNHangars: " + getNHangars() + "\nNMedals: " + getNMedals();
+
+        return cadena;
+    }
+
+    LootToUI getUIVersion(){
+        return new LootToUI(this);
+    }
 }

@@ -28,5 +28,11 @@ public class SuppliesPackage {
     float getShieldPower(){
         return shieldPower;
     }
+    
+    public String toString() {
+        String cadena = "AmmoPower: " + getAmmoPower() + "\nFuelUnits: " + getFuelUnits() +
+        "\nShieldPower: " + getShieldPower();
 
+        return cadena;
+    }
 }

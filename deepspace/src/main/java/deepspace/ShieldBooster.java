@@ -37,4 +37,14 @@ public class ShieldBooster {
         }
 
     }
+
+    public String toString() {
+        String cadena = "Name: " + name + "\nBoost: " + getBoost() + "\nUses: " + getUses();
+        
+        return cadena;
+    }
+
+    ShieldToUI getUIVersion(){
+        return new ShieldToUI(this);
+    }
 }
