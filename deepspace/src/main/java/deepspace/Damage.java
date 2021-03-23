@@ -1,59 +1,101 @@
 package deepspace;
 
+import java.util.ArrayList;
+
 public class Damage {
     private int nShields;
     private int nWeapons;
+    private ArrayList<WeaponType> weapons;
 
     Damage(int w, int s){
         nShields = s;
         nWeapons = w;
+        weapons = new ArrayList<WeaponType>();
     }
 
-    Damage(WeaponType[] wl, int s){
-        //?????
+    Damage(ArrayList<WeaponType> wl, int s){
+        nShields = s;
+        weapons = wl; //Está bien asignar una referencia de wl a weapons?
+        nWeapons = 0;
     }
 
     Damage(Damage d){
-        nShields = d.nShields;
-        nWeapons = d.nWeapons;
+        //Usar las funciones getNShields()y getWeapons()??
+        this (d.weapons,d.nShields);
+        nWeapons = d.getNWeapons();
+
     }
 
     DamageToUI getUIVersion(){
         return new DamageToUI(this);
     }
 
-    private int arrayContainsType(Weapon[] w, WeaponType t){
-        throw new UnsupportedOperationException();
+    private int arrayContainsType(ArrayList<Weapon> w, WeaponType t){
+        weapons.clear();    //???????
+        int index = -1;
+
+        for (int i = 0; i < w.size(); i++){
+            weapons.add(w.get(i).getType());
+        }
+
+        index = weapons.indexOf(t);
+
+        return index;
     }
 
-    public Damage adjust(Weapon[] w, ShieldBooster[] s){
+    public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
+        Damage danio = new Damage (this);
+
+        int shields = danio.getNShields();
+        shields = s.size();
+        int weaps = danio.getNWeapons();
+        weaps = w.size();
+
+        danio.arrayContainsType(w, danio.getWeapons().get(0)); //????
+
+        return danio;
+    }
+
+    public void discardWeapon(Weapon w){
+        if (weapons.isEmpty()){
+            if (nWeapons > 0){
+                nWeapons--;
+            }
+        }
+        else{
+            if (!weapons.remove(w.getType())){ //Si no sale bien también se decrementa??
+                if (nWeapons > 0){
+                    nWeapons--;
+                }
+            }
+        }
 
     }
 
-    void discardWeapon(Weapon w){
-        throw new UnsupportedOperationException();
-
+    public void discardShieldBooster(){
+        if (nShields > 0)
+            nShields--;
     }
 
-    void discardShieldBooster(){
-        throw new UnsupportedOperationException();
+    public boolean hasNoEffect(){
+        boolean noeffect = false;
+
+        if (getNShields() == 0 && getNWeapons() == 0 && weapons.isEmpty())
+            noeffect = true;
+
+        return noeffect;
     }
 
-    boolean hasNoEffect(){
-        throw new UnsupportedOperationException();
-
-    }
-
-    int getNShields(){
+    public int getNShields(){
         return nShields;
     }
 
-    int getNWeapons(){
+    public int getNWeapons(){
         return nWeapons;
     }
 
-    WeaponType[] getWeapons(){
-        throw new UnsupportedOperationException();
+    public ArrayList<WeaponType> getWeapons(){
+        return weapons;
 
     }
 }
