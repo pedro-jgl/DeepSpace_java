@@ -1,3 +1,5 @@
+package deepspace;
+
 public class EnemyStarship {
     private float ammoPower;
     private String name;
