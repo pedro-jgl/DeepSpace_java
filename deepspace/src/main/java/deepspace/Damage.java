@@ -26,7 +26,7 @@ public class Damage {
 
     }
 
-    DamageToUI getUIVersion(){
+    DamageToUI getUIversion(){
         return new DamageToUI(this);
     }
 

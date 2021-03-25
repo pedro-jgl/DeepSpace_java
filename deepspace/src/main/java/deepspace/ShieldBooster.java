@@ -44,7 +44,7 @@ public class ShieldBooster {
         return cadena;
     }
 
-    ShieldToUI getUIVersion(){
+    ShieldToUI getUIversion(){
         return new ShieldToUI(this);
     }
 }

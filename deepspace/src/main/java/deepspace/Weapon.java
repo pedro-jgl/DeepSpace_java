@@ -47,7 +47,7 @@ public class Weapon {
         return cadena;
     }
 
-    WeaponToUI getUIVersion(){
+    WeaponToUI getUIversion(){
         return new WeaponToUI(this);
     }
 }

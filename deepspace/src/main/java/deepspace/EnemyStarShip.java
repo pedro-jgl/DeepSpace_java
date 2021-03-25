@@ -1,13 +1,13 @@
 package deepspace;
 
-public class EnemyStarship {
+public class EnemyStarShip {
     private float ammoPower;
     private String name;
     private float shieldPower;
     private Loot loot;
     private Damage damage;
 
-    EnemyStarship(String n, float a, float s, Loot l, Damage d){
+    EnemyStarShip(String n, float a, float s, Loot l, Damage d){
         name        = n;
         ammoPower   = a;
         shieldPower = s;
@@ -15,7 +15,7 @@ public class EnemyStarship {
         damage      = d;
     }
 
-    EnemyStarship(EnemyStarship e){
+    EnemyStarShip(EnemyStarShip e){
         this.ammoPower   = e.ammoPower;
         this.name        = e.name;
         this.shieldPower = e.shieldPower;
@@ -23,11 +23,15 @@ public class EnemyStarship {
         this.damage      = e. damage;
     }
 
-    EnemyToUI getUIVersion{
+    EnemyToUI getUIversion(){
         return new EnemyToUI(this);
     }
 
     float fire(){
+        return this.ammoPower;
+    }
+
+    float getAmmoPower(){
         return this.ammoPower;
     }
 
@@ -43,7 +47,7 @@ public class EnemyStarship {
         return this.name;
     }
 
-    float getShiedPower(){
+    float getShieldPower(){
         return this.shieldPower;
     }
 

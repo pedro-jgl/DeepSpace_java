@@ -44,7 +44,7 @@ public class Loot {
         return cadena;
     }
 
-    LootToUI getUIVersion(){
+    LootToUI getUIversion(){
         return new LootToUI(this);
     }
 }
