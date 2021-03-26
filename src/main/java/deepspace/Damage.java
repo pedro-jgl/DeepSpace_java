@@ -111,4 +111,14 @@ public class Damage {
         return weapons;
 
     }
+
+    public String toString(){
+        String cadena = "Número de escudos perdidos: " + getNShields() + ", número de armas perdidas: " + getNWeapons();
+
+        if (getNWeapons() == NO_USE){
+            cadena = "Número de escudos perdidos: " + getNShields() + ", tipos de armas a descartar: " + getWeapons().toString();
+        }
+
+        return cadena;
+    }
 }
