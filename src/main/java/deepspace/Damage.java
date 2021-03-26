@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Damage {
     private final static int NO_USE = -1;
+    
     //O bien se usa el número de armas o bien la lista de armas
     private int nShields;
     private int nWeapons;
