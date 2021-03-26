@@ -3,6 +3,8 @@ package deepspace;
 import java.util.ArrayList;
 
 public class Damage {
+    private final static int NO_USE = -1;
+    //O bien se usa el número de armas o bien la lista de armas
     private int nShields;
     private int nWeapons;
     private ArrayList<WeaponType> weapons;
@@ -10,20 +12,21 @@ public class Damage {
     Damage(int w, int s){
         nShields = s;
         nWeapons = w;
-        weapons = new ArrayList<WeaponType>();
+        weapons = null;
     }
 
     Damage(ArrayList<WeaponType> wl, int s){
         nShields = s;
-        weapons = wl; //Está bien asignar una referencia de wl a weapons?
-        nWeapons = 0;
+        weapons = new ArrayList<WeaponType>(wl);
+        nWeapons = NO_USE;
     }
 
     Damage(Damage d){
-        //Usar las funciones getNShields()y getWeapons()??
-        this (d.weapons,d.nShields);
-        nWeapons = d.getNWeapons();
+        this (d.getNWeapons(),d.getNShields());
 
+        if (d.getNWeapons() == -1){
+            weapons = new ArrayList<WeaponType>(d.getWeapons());
+        } 
     }
 
     DamageToUI getUIversion(){
@@ -31,70 +34,79 @@ public class Damage {
     }
 
     private int arrayContainsType(ArrayList<Weapon> w, WeaponType t){
-        weapons.clear();    //???????
+        ArrayList<WeaponType> weaptype = new ArrayList<WeaponType>();    
         int index = -1;
 
         for (int i = 0; i < w.size(); i++){
-            weapons.add(w.get(i).getType());
+            weaptype.add(w.get(i).getType());
         }
 
-        index = weapons.indexOf(t);
+        index = weaptype.indexOf(t);
 
         return index;
     }
 
+    //Este método hace un ajuste ya que el daño puede indicar que se pierdan más
+    //shieldboosters de los que el jugador tiene, luego tenemos que ajustarlo
     public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
         Damage danio = new Damage (this);
 
-        int shields = danio.getNShields();
-        shields = s.size();
-        int weaps = danio.getNWeapons();
-        weaps = w.size();
+        if (s.size() < danio.getNShields())
+            danio.nShields = s.size();
 
-        danio.arrayContainsType(w, danio.getWeapons().get(0)); //????
+        if (danio.getNWeapons() != NO_USE){
+            if (w.size() < danio.getNWeapons())
+                danio.nWeapons = w.size();
+        } else{
+        
+            //????
+            for (int i = 0; i < danio.getWeapons().size(); ){
+                if ( arrayContainsType(w, danio.getWeapons().get(i)) == -1 ){
+                    danio.weapons.remove(i);
+                }else{
+                    i++;
+                }
+            }
+        }
 
         return danio;
     }
 
     public void discardWeapon(Weapon w){
-        if (weapons.isEmpty()){
+        if (weapons != null){
             if (nWeapons > 0){
                 nWeapons--;
             }
         }
         else{
-            if (!weapons.remove(w.getType())){ //Si no sale bien también se decrementa??
-                if (nWeapons > 0){
-                    nWeapons--;
-                }
-            }
+            weapons.remove(w.getType());
         }
 
     }
 
-    public void discardShieldBooster(){
+    void discardShieldBooster(){
         if (nShields > 0)
             nShields--;
     }
 
-    public boolean hasNoEffect(){
+    boolean hasNoEffect(){
         boolean noeffect = false;
 
-        if (getNShields() == 0 && getNWeapons() == 0 && weapons.isEmpty())
+        if ( getNShields() == 0 && ( ( getNWeapons() == NO_USE && getWeapons().isEmpty() ) || ( getWeapons() == null && getNWeapons() == 0 ) ) )
             noeffect = true;
 
         return noeffect;
     }
 
-    public int getNShields(){
+    int getNShields(){
         return nShields;
     }
 
-    public int getNWeapons(){
+    int getNWeapons(){
         return nWeapons;
     }
 
-    public ArrayList<WeaponType> getWeapons(){
+    ArrayList<WeaponType> getWeapons(){
         return weapons;
 
     }
