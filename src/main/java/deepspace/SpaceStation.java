@@ -123,11 +123,11 @@ public class SpaceStation {
     public SpaceStationToUI getUIversion(){
         return new SpaceStationToUI(this);
     }
-    
+
     public ArrayList<Weapon> getWeapons(){
         return weapons;
     }
-    
+        
     public void mountShieldBooster(int i){
         if (hangar != null){
             shieldBoosters.add(hangar.removeShieldBooster(i));
@@ -154,9 +154,9 @@ public class SpaceStation {
     }
 
     public void receiveHangar(Hangar h) {
-        if(hangar == null){
+        if(hangar == null)
             hangar = h;
-        }
+        
     }
 
     public boolean receiveShieldBooster(ShieldBooster s){
@@ -185,11 +185,11 @@ public class SpaceStation {
         }
     }
 
-    public void setLoot(Loot loot){
+    public void setLoot(Loot loot) {
         throw new UnsupportedOperationException();
     }
 
-    public void setPendingDamage(Damage d){
+    public void setPendingDamage(Damage d) {
         pendindDamage = d.adjust(weapons, shieldBoosters);
     }
     
@@ -199,5 +199,26 @@ public class SpaceStation {
         else
             return false;
 
+    }
+
+    public String toString(){
+        //Comprobar que al ser null salga PendingDamage vacío y hangar
+        String cadena = "Name: " + name + "ammoPower: " + ammoPower + "\nFuel Units: " + fuelUnits + "\nMedals: " + nMedals
+        + "\nShieldPower: " + shieldPower + "\nPendingDamage: " + pendindDamage.toString() + "\nHangar: " + hangar.toString() + "\nWeapons: \n";
+    
+        for (int i = 0; i < weapons.size(); i++){
+            cadena += "Arma " + (i+1) + ": ";
+            cadena += weapons.get(i).toString();
+            cadena += "\n";
+        }
+        
+        cadena += "ShieldBoosters: ";
+        
+        for(int i=0; i < shieldBoosters.size(); i++){
+            cadena += "ShieldBooster " + (i+1) + ": ";
+            cadena += shieldBoosters.get(i).toString();
+            cadena += "\n";
+        }
+        return cadena;
     }
 }

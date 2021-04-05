@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Hangar {
     private int maxElements;
     private ArrayList<Weapon> weapons;
-    private ArrayList<ShieldBooster> shieldboosters;
+    private ArrayList<ShieldBooster> shieldBoosters;
 
     Hangar(int capacity){
         maxElements = capacity;
         weapons = new ArrayList<Weapon>();
-        shieldboosters = new ArrayList<ShieldBooster>();
+        shieldBoosters = new ArrayList<ShieldBooster>();
     }
 
     Hangar(Hangar h){
@@ -22,7 +22,7 @@ public class Hangar {
     }
 
     private boolean spaceAvailable(){
-        int ocupado = weapons.size() + shieldboosters.size();
+        int ocupado = weapons.size() + shieldBoosters.size();
         boolean libre = true;
 
         if (ocupado == maxElements)
@@ -48,7 +48,7 @@ public class Hangar {
 
         if (spaceAvailable()){
             aniadido = true;
-            shieldboosters.add(s);
+            shieldBoosters.add(s);
         }
 
         return aniadido;
@@ -59,7 +59,7 @@ public class Hangar {
     }
 
     public ArrayList<ShieldBooster> getShieldBoosters(){
-        return shieldboosters;
+        return shieldBoosters;
     }
 
     public ArrayList<Weapon> getWeapons(){
@@ -68,7 +68,7 @@ public class Hangar {
 
     public ShieldBooster removeShieldBooster(int s){
         //El método remove lanza: IndexOutOfBoundsException - if the index is out of range (index < 0 || index >= size())
-        ShieldBooster sb = shieldboosters.remove(s);
+        ShieldBooster sb = shieldBoosters.remove(s);
         return sb;
     }
 
@@ -89,9 +89,9 @@ public class Hangar {
         
         cadena += "ShieldBoosters: ";
         
-        for(int i=0; i < shieldboosters.size(); i++){
+        for(int i=0; i < shieldBoosters.size(); i++){
             cadena += "ShieldBooster " + (i+1) + ": ";
-            cadena += shieldboosters.get(i).toString();
+            cadena += shieldBoosters.get(i).toString();
             cadena += "\n";
         }
         return cadena;
