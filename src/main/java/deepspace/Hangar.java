@@ -79,8 +79,21 @@ public class Hangar {
 
     public String toString(){
         //Hay que hacer un toString de ArrayList<Weapon> y del otro??
-        String cadena = "Máx elementos: " + maxElements + "\nWeapons: " + weapons.toString() + "\nShieldBoosters: " + shieldboosters.toString();
+        String cadena = "Máx elementos: " + maxElements + "\nWeapons: ";
 
+        for (int i = 0; i < weapons.size(); i++){
+            cadena += "Arma " + (i+1) + ": ";
+            cadena += weapons.get(i).toString();
+            cadena += "\n";
+        }
+        
+        cadena += "ShieldBoosters: ";
+        
+        for(int i=0; i < shieldboosters.size(); i++){
+            cadena += "ShieldBooster " + (i+1) + ": ";
+            cadena += shieldboosters.get(i).toString();
+            cadena += "\n";
+        }
         return cadena;
     }
 }

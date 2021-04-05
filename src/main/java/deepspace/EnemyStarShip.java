@@ -65,5 +65,9 @@ public class EnemyStarShip {
         return result;
     }
 
-    //Añadir método toString
+    public String toString(){
+        String descripcion = "Name: " + name + "\nammoPower: " + ammoPower + "\nshieldPower: " + shieldPower + "\nLoot: " + loot.toString() + "\nDamage: " + damage.toString();
+
+        return descripcion;
+    }
 }
