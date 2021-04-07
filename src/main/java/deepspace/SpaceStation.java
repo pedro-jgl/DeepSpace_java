@@ -3,8 +3,8 @@ package deepspace;
 import java.util.ArrayList;
 
 public class SpaceStation {
-    private final int MAXFUEL = 100;
-    private final float SHIELDLOSSPERUNITSHOT = 0.1f;
+    static private final int MAXFUEL = 100;
+    static private final float SHIELDLOSSPERUNITSHOT = 0.1f;
     private float ammoPower;
     private float fuelUnits;
     private String name;
@@ -17,11 +17,14 @@ public class SpaceStation {
     private Hangar hangar;
 
     private void assignFuelValue(float f){
-        fuelUnits = f;
+        if(f <= MAXFUEL )
+            fuelUnits = f;
+        else
+            f = MAXFUEL;
     }
 
     private void cleanPendingDamage(){
-        if (pendindDamage != null)
+        if (pendindDamage.hasNoEffect())
             pendindDamage = null;
     }
 
