@@ -89,4 +89,16 @@ public class GameUniverse {
         throw new UnsupportedOperationException();
     }
 
+    public String toString(){
+        String cadena = "CurrentSpaceStation: " + currentStation.toString() + "\nCurrentSpaceStationIndex: " + currentStationIndex 
+        + "\nTurns: " + turns + "\nCurrentEnemy: " + currentEnemy.toString() + "\nDice: " + dice.toString() + "\nGameStateController: "
+        + gameState.toString() + "\nArray de SpaceStation: ";
+
+        for (int i = 0; i < spaceStations.size(); i++){
+            cadena += ("\nSpaceStation " + (i+1) + ": " + spaceStations.get(i).toString());
+        }
+
+        return cadena;
+    }
+
 }
