@@ -14,6 +14,7 @@ public class GameUniverse {
     private GameStateController gameState;
     
     GameUniverse(){
+        //No se tiene que inicializar nada más??
         turns = 0;
         dice = new Dice();
         gameState = new GameStateController();
