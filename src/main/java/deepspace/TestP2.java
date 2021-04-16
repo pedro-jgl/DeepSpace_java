@@ -1,6 +1,6 @@
 package deepspace;
 
-public class TestP1 {
+public class TestP2 {
     public static void main(String[] args){
         final int VECES_A_TIRAR = 100;
         final int PLAYERS = 3;
