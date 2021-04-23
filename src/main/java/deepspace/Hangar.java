@@ -68,13 +68,19 @@ public class Hangar {
 
     public ShieldBooster removeShieldBooster(int s){
         //El método remove lanza: IndexOutOfBoundsException - if the index is out of range (index < 0 || index >= size())
-        ShieldBooster sb = shieldBoosters.remove(s);
-        return sb;
+        if(s>=0 && s<shieldBoosters.size()){
+            ShieldBooster sb = shieldBoosters.remove(s);
+            return sb;
+        }
+        return null;
     }
 
     public Weapon removeWeapon(int w){
-        Weapon arma = weapons.remove(w);
-        return arma;
+        if(w >= 0 && w < weapons.size()){
+            Weapon arma = weapons.remove(w);
+            return arma;
+        }
+        return null;
     }
 
     public String toString(){

@@ -13,7 +13,7 @@ public class GameUniverse {
     private ArrayList<SpaceStation> spaceStations;
     private GameStateController gameState;
     
-    GameUniverse(){
+    public GameUniverse(){
         //No se tiene que inicializar nada más??
         turns = 0;
         dice = new Dice();

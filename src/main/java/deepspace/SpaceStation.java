@@ -61,8 +61,15 @@ public class SpaceStation {
     }    
 
     public void discardShieldBooster(int i){
-        throw new UnsupportedOperationException();
-    }
+        if(i >= 0 && i < getShieldBoosters().size()){
+            ShieldBooster sh = shieldBoosters.remove(i);
+
+            if(getPendingDamage() != null){
+                pendindDamage.discardShieldBooster();
+
+                cleanPendingDamage();
+            }
+        }    }
     
     public void discardShieldBoosterInHangar(int i){
         if (hangar != null)
@@ -70,7 +77,15 @@ public class SpaceStation {
     }
     
     public void discardWeapon(int i){
-        throw new UnsupportedOperationException();
+        if(i >= 0 && i < getWeapons().size()){
+            Weapon w = weapons.remove(i);
+
+            if(getPendingDamage() != null){
+                pendindDamage.discardWeapon(w);
+
+                cleanPendingDamage();
+            }
+        }
     }
     
     public void discardWeaponinHangar(int i){
@@ -79,7 +94,12 @@ public class SpaceStation {
     }
 
     public float fire(){
-        throw new UnsupportedOperationException();
+        float factor = 1;
+        for(int i=0; i<this.getWeapons().size(); i++){
+            factor =  (factor * this.getWeapons().get(i).UseIt());
+        }
+
+        return this.getAmmoPower()*factor;
     }
 
     
@@ -153,7 +173,13 @@ public class SpaceStation {
     }
 
     public float protection(){
-        throw new UnsupportedOperationException();
+        float factor = 1;
+
+        for(int i=0; i<this.getShieldBoosters().size(); i++){
+            factor = factor * this.getShieldBoosters().get(i).UseIt();
+        }
+   
+        return shieldPower * factor;
     }
 
     public void receiveHangar(Hangar h) {
@@ -171,7 +197,18 @@ public class SpaceStation {
     }
 
     public ShotResult receiveShot(float shot){
-        throw new UnsupportedOperationException();
+        float myProtection = this.protection();
+        
+        if(myProtection >= shot){
+            this.shieldPower-=SHIELDLOSSPERUNITSHOT*shot;
+            if(this.shieldPower < 0.0)
+                this.shieldPower = (float) 0.0;
+            
+            return ShotResult.RESIST;
+        }else{
+            this.shieldPower = (float) 0.0;
+            return ShotResult.DONOTRESIST;
+        }
     }
     
     public void receiveSupplies(SuppliesPackage s){
@@ -189,7 +226,34 @@ public class SpaceStation {
     }
 
     public void setLoot(Loot loot) {
-        throw new UnsupportedOperationException();
+        CardDealer dealer = CardDealer.getInstance();
+
+        int h = loot.getNHangars();
+        
+        if(h>0){
+            Hangar hangar = dealer.nextHangar();
+            this.receiveHangar(hangar);
+        }
+
+        int elements = loot.getNSupplies();
+        for(int i=0; i<elements; i++){
+            SuppliesPackage sup = dealer.nextSuppliesPackage();
+            receiveSupplies(sup);
+        }
+
+        elements = loot.getNWeapons();
+        for(int i=0; i<elements; i++){
+            Weapon weap = dealer.nextWeapon();
+            receiveWeapon(weap);
+        }
+
+        elements = loot.getNShields();
+        for(int i=0; i<elements; i++){
+            ShieldBooster sh = dealer.nextShieldBooster();
+            receiveShieldBooster(sh);
+        }
+
+        this.nMedals = loot.getNMedals();
     }
 
     public void setPendingDamage(Damage d) {
