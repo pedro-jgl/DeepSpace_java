@@ -23,13 +23,12 @@ public class GameUniverse {
     
     public CombatResult combat(){
         GameState state = gameState.getState();
+        int result;
+        float fire;
     
         if(state == GameState.BEFORECOMBAT || state == GameState.INIT){
-            combat(currentStation, currentEnemy); 
-
-            GameCharacter ch = dice.firstShot();
-
-            if()
+            //Así??
+            return combat(currentStation, currentEnemy); 
 
         }else{
             return CombatResult.NOCOMBAT;
@@ -38,7 +37,61 @@ public class GameUniverse {
     }
 
     CombatResult combat(SpaceStation station, EnemyStarShip enemy){
-        throw new UnsupportedOperationException();
+        GameState state = gameState.getState();
+        GameCharacter ch = this.dice.firstShot();
+        Damage damage;
+        float fire, s;
+        ShotResult result;
+        boolean enemyWins = false, moves = false;
+        Loot aLoot;
+        CombatResult combatResult = CombatResult.NOCOMBAT;
+
+        //No sé si es necesario comprobar en este método el gamestate, pq si solo va a ser llamado desde combat() ya lo comprueba este último
+        if(state == GameState.BEFORECOMBAT || state == GameState.INIT){
+            if (ch==GameCharacter.ENEMYSTARSHIP){
+                fire = enemy.fire();
+                result = station.receiveShot(fire);
+    
+                if (result == ShotResult.RESIST){
+                    fire = station.fire();
+                    result = enemy.receiveShot(fire);
+    
+                    enemyWins = (result == ShotResult.RESIST);
+    
+                }else{
+                    enemyWins = true;
+                }
+            }else{
+                fire = station.fire();
+                result = enemy.receiveShot(fire);
+                enemyWins = (result == ShotResult.RESIST);
+            }
+    
+            if (enemyWins){
+                s = station.getSpeed();
+                moves = dice.spaceStationMoves(s);
+                
+                if (!moves){
+                    damage = enemy.getDamage();
+                    station.setPendingDamage(damage);
+                    combatResult = CombatResult.ENEMYWINS;
+                }else{
+                    station.move();
+                    combatResult = CombatResult.STATIONESCAPES;
+                }
+            }else{
+                aLoot = enemy.getLoot();
+                station.setLoot(aLoot);
+                combatResult = CombatResult.STATIONWINS;
+            }
+    
+            this.gameState.next(this.turns, this.spaceStations.size());
+        }else{
+            combatResult = CombatResult.NOCOMBAT;
+        }
+        
+
+        return combatResult;
     }
 
     public void discardHangar(){
