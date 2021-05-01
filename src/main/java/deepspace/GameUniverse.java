@@ -145,10 +145,6 @@ public class GameUniverse {
 
                 SpaceStation station = new SpaceStation(names.get(i), supplies);
 
-
-                //Se modifica station despues de añadirla al array??
-                spaceStations.add(station);
-
                 int nh = dice.initWithNHangar();
                 int nw = dice.initWithNWeapons();
                 int ns = dice.initWithNShields();
@@ -156,6 +152,8 @@ public class GameUniverse {
                 Loot lo = new Loot(0, nw, ns, nh, 0);
 
                 station.setLoot(lo);
+
+                spaceStations.add(station);
             }
 
             currentStationIndex = dice.whoStarts(names.size());
