@@ -23,9 +23,7 @@ public class GameUniverse {
     
     public CombatResult combat(){
         GameState state = gameState.getState();
-        int result;
-        float fire;
-    
+
         if(state == GameState.BEFORECOMBAT || state == GameState.INIT){
             //Así??
             return combat(currentStation, currentEnemy); 
@@ -46,7 +44,7 @@ public class GameUniverse {
         Loot aLoot;
         CombatResult combatResult = CombatResult.NOCOMBAT;
 
-        //No sé si es necesario comprobar en este método el gamestate, pq si solo va a ser llamado desde combat() ya lo comprueba este último
+
         if(state == GameState.BEFORECOMBAT || state == GameState.INIT){
             if (ch==GameCharacter.ENEMYSTARSHIP){
                 fire = enemy.fire();

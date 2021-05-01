@@ -67,7 +67,7 @@ public class SpaceStation {
             if(getPendingDamage() != null){
                 pendindDamage.discardShieldBooster();
 
-                cleanPendingDamage();
+                this.cleanPendingDamage();
             }
         }    }
     
@@ -83,7 +83,7 @@ public class SpaceStation {
             if(getPendingDamage() != null){
                 pendindDamage.discardWeapon(w);
 
-                cleanPendingDamage();
+                this.cleanPendingDamage();
             }
         }
     }
