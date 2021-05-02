@@ -51,7 +51,7 @@ public class Damage {
     //shieldboosters de los que el jugador tiene, luego tenemos que ajustarlo
     public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
         Damage danio = new Damage (this);
-
+        int indice;
         if (s.size() < danio.getNShields())
             danio.nShields = s.size();
 
@@ -59,12 +59,18 @@ public class Damage {
             if (w.size() < danio.getNWeapons())
                 danio.nWeapons = w.size();
         } else{
-        
-            //????
+            ArrayList<Weapon> copiaw = new ArrayList<Weapon>();
+            
+            for(int i=0; i<w.size(); i++)
+                copiaw.add(w.get(i));
+
             for (int i = 0; i < danio.getWeapons().size(); ){
-                if ( arrayContainsType(w, danio.getWeapons().get(i)) == -1 ){
+                indice = arrayContainsType(copiaw, danio.getWeapons().get(i));
+
+                if (indice == -1){
                     danio.weapons.remove(i);
                 }else{
+                    copiaw.remove(indice);
                     i++;
                 }
             }
