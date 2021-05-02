@@ -74,7 +74,7 @@ public class Damage {
     }
 
     public void discardWeapon(Weapon w){
-        if (weapons != null){
+        if (weapons == null){
             if (nWeapons > 0){
                 nWeapons--;
             }

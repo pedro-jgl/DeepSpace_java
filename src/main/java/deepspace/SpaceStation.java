@@ -270,9 +270,15 @@ public class SpaceStation {
 
     public String toString(){
         //Comprobar que al ser null salga PendingDamage vacío y hangar
-        String cadena = "Name: " + name + "ammoPower: " + ammoPower + "\nFuel Units: " + fuelUnits + "\nMedals: " + nMedals
-        + "\nShieldPower: " + shieldPower + "\nPendingDamage: " + pendindDamage.toString() + "\nHangar: " + hangar.toString() + "\nWeapons: \n";
-    
+        String cadena = "Name: " + name; 
+        cadena += "\nammoPower: " + ammoPower;
+        cadena += "\nFuel Units: " + fuelUnits;
+        cadena += "\nMedals: " + nMedals;
+        cadena += "\nShieldPower: " + shieldPower;
+        cadena += "\nPendingDamage: " + pendindDamage.toString();
+        cadena += "\nHangar: " + hangar.toString();
+        cadena += "\nWeapons: \n";
+                
         for (int i = 0; i < weapons.size(); i++){
             cadena += "Arma " + (i+1) + ": ";
             cadena += weapons.get(i).toString();
