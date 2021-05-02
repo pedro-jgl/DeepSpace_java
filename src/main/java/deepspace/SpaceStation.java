@@ -41,19 +41,21 @@ public class SpaceStation {
     }
     
     public void cleanUpMountedItems(){
-        for (int i = 0; i < weapons.size(); ){
-            if (weapons.get(i).getUses() == 0)
-                weapons.remove(i);
-            else
-                i++;
-        }
+        if (weapons != null)
+            for (int i = 0; i < weapons.size(); ){
+                if (weapons.get(i).getUses() == 0)
+                    weapons.remove(i);
+                else
+                    i++;
+            }
 
-        for (int i = 0; i < shieldBoosters.size(); ){
-            if (shieldBoosters.get(i).getUses() == 0)
-                shieldBoosters.remove(i);
-            else
-                i++;
-        }
+        if (shieldBoosters != null)
+            for (int i = 0; i < shieldBoosters.size(); ){
+                if (shieldBoosters.get(i).getUses() == 0)
+                    shieldBoosters.remove(i);
+                else
+                    i++;
+            }
     }
 
     public void discardHangar(){
@@ -144,6 +146,12 @@ public class SpaceStation {
     }
 
     public SpaceStationToUI getUIversion(){
+        if (weapons == null)
+            weapons = new ArrayList<Weapon>();
+            
+        if (shieldBoosters == null)
+            shieldBoosters = new ArrayList<ShieldBooster>();
+
         return new SpaceStationToUI(this);
     }
 

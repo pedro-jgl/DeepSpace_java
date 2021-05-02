@@ -57,7 +57,7 @@ public class Dice {
 
     int whoStarts(int nPlayers){
         int player = this.generator.nextInt(nPlayers);
-        player++;
+        //player++;
         return player;
     }
 

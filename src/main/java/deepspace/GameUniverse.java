@@ -14,7 +14,6 @@ public class GameUniverse {
     private GameStateController gameState;
     
     public GameUniverse(){
-        //No se tiene que inicializar nada más??
         turns = 0;
         dice = new Dice();
         gameState = new GameStateController();
@@ -153,11 +152,14 @@ public class GameUniverse {
 
                 station.setLoot(lo);
 
+                if (spaceStations == null)
+                    spaceStations = new ArrayList<>();
+
                 spaceStations.add(station);
             }
 
             currentStationIndex = dice.whoStarts(names.size());
-
+            
             currentStation = spaceStations.get(currentStationIndex);
 
             currentEnemy = dealer.nextEnemy();
