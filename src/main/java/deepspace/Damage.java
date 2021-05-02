@@ -25,7 +25,7 @@ public class Damage {
     Damage(Damage d){
         this (d.getNWeapons(),d.getNShields());
 
-        if (d.getNWeapons() == -1){
+        if (d.getNWeapons() == NO_USE){
             weapons = new ArrayList<WeaponType>(d.getWeapons());
         } 
     }
@@ -118,11 +118,13 @@ public class Damage {
         if (getNWeapons() == NO_USE){
             cadena = "Número de escudos perdidos: " + getNShields() + ", tipos de armas a descartar: ";
 
-            for (int i = 0; i < weapons.size(); i++){
-                cadena += "Arma " + (i+1) + ": ";
-                cadena += weapons.get(i).toString();
-                cadena += "\n";
-            }
+            if(weapons != null)
+            
+                for (int i = 0; i < weapons.size(); i++){
+                    cadena += "Arma " + (i+1) + ": ";
+                    cadena += weapons.get(i).toString();
+                    cadena += "\n";
+                }
             
         }
 

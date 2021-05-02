@@ -153,13 +153,28 @@ public class SpaceStation {
         
     public void mountShieldBooster(int i){
         if (hangar != null){
-            shieldBoosters.add(hangar.removeShieldBooster(i));
+            if (shieldBoosters != null){
+                ShieldBooster sb = hangar.removeShieldBooster(i);
+                if(sb != null)
+                    shieldBoosters.add(sb);
+            }else{
+                shieldBoosters = new ArrayList<ShieldBooster>();
+                shieldBoosters.add(hangar.removeShieldBooster(i));
+            }
         }
     }
 
     public void mountWeapon(int i){
         if (hangar != null){
-            weapons.add(hangar.removeWeapon(i));
+            if (weapons != null){
+                Weapon w = hangar.removeWeapon(i);
+                if (w != null)
+                    weapons.add(w);
+            }else{
+                weapons = new ArrayList<Weapon>();
+                weapons.add(hangar.removeWeapon(i));
+            }
+
         }
     }
     
@@ -275,23 +290,32 @@ public class SpaceStation {
         cadena += "\nFuel Units: " + fuelUnits;
         cadena += "\nMedals: " + nMedals;
         cadena += "\nShieldPower: " + shieldPower;
-        cadena += "\nPendingDamage: " + pendindDamage.toString();
-        cadena += "\nHangar: " + hangar.toString();
+
+        if (pendindDamage != null)
+            cadena += "\nPendingDamage: " + pendindDamage.toString();
+        if (hangar != null)
+            cadena += "\nHangar: " + hangar.toString();
+
+        
         cadena += "\nWeapons: \n";
-                
-        for (int i = 0; i < weapons.size(); i++){
-            cadena += "Arma " + (i+1) + ": ";
-            cadena += weapons.get(i).toString();
-            cadena += "\n";
+           
+        if (weapons != null)
+            for (int i = 0; i < weapons.size(); i++){
+                cadena += "Arma " + (i+1) + ": ";
+                cadena += weapons.get(i).toString();
+                cadena += "\n";
         }
+        
         
         cadena += "ShieldBoosters: ";
         
-        for(int i=0; i < shieldBoosters.size(); i++){
-            cadena += "ShieldBooster " + (i+1) + ": ";
-            cadena += shieldBoosters.get(i).toString();
-            cadena += "\n";
-        }
+        if(shieldBoosters != null)
+            for(int i=0; i < shieldBoosters.size(); i++){
+                cadena += "ShieldBooster " + (i+1) + ": ";
+                cadena += shieldBoosters.get(i).toString();
+                cadena += "\n";
+            }
+            
         return cadena;
     }
 }

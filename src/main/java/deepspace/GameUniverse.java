@@ -18,7 +18,7 @@ public class GameUniverse {
         turns = 0;
         dice = new Dice();
         gameState = new GameStateController();
-
+        currentStationIndex = 0;
     }
     
     public CombatResult combat(){
@@ -206,13 +206,22 @@ public class GameUniverse {
     }
 
     public String toString(){
-        String cadena = "CurrentSpaceStation: " + currentStation.toString() + "\nCurrentSpaceStationIndex: " + currentStationIndex 
-        + "\nTurns: " + turns + "\nCurrentEnemy: " + currentEnemy.toString() + "\nDice: " + dice.toString() + "\nGameStateController: "
-        + gameState.toString() + "\nArray de SpaceStation: ";
+        String cadena = "CurrentSpaceStation: ";
+        if(currentStation != null)
+            cadena += currentStation.toString();
+        cadena += "\nCurrentSpaceStationIndex: " + currentStationIndex;
+        cadena += "\nTurns: " + turns;
+        cadena += "\nCurrentEnemy: ";
+        if(currentEnemy != null)
+            cadena += currentEnemy.toString();
+        cadena += "\nDice: " + dice.toString();
+        cadena += "\nGameStateController: " + gameState.toString();
+        cadena += "\nArray de SpaceStation: ";
 
-        for (int i = 0; i < spaceStations.size(); i++){
-            cadena += ("\nSpaceStation " + (i+1) + ": " + spaceStations.get(i).toString());
-        }
+        if (spaceStations != null)
+            for (int i = 0; i < spaceStations.size(); i++){
+                cadena += ("\nSpaceStation " + (i+1) + ": " + spaceStations.get(i).toString());
+            }
 
         return cadena;
     }
