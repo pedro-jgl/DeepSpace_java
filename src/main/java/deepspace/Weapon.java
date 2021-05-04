@@ -15,20 +15,20 @@ public class Weapon {
         this (s.name,s.type,s.uses);
     }
     
-    WeaponType getType(){
+    public WeaponType getType(){
         return type;
     }
     
-    int getUses(){
+    public int getUses(){
         return uses;
     }
     
-    float power(){
+    public float power(){
         return type.getPower();
 
     }
 
-    float UseIt(){
+    public float UseIt(){
         final float ZERO_USES = 1.0f;
 
         if(this.uses > 0){

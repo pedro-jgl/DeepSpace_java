@@ -27,11 +27,11 @@ public class EnemyStarShip {
         return new EnemyToUI(this);
     }
 
-    float fire(){
+    public float fire(){
         return this.ammoPower;
     }
 
-    float getAmmoPower(){
+    public float getAmmoPower(){
         return this.ammoPower;
     }
 
@@ -39,23 +39,23 @@ public class EnemyStarShip {
         return this.damage;
     }
 
-    Loot getLoot(){
+    public Loot getLoot(){
         return this.loot;
     }
 
-    String getName(){
+    public String getName(){
         return this.name;
     }
 
-    float getShieldPower(){
+    public float getShieldPower(){
         return this.shieldPower;
     }
 
-    float protection(){
+    public float protection(){
         return this.shieldPower;
     }
 
-    ShotResult receiveShot(float shot){
+    public ShotResult receiveShot(float shot){
         ShotResult result = ShotResult.RESIST;
         
         if(protection() < shot){

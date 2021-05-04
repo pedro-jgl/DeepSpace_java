@@ -126,7 +126,7 @@ public class GameUniverse {
     }
 
     public boolean haveAWinner(){
-        if(currentStation.getNMedals() == WIN)
+        if(currentStation.getNMedals() >= WIN)
             return true;
         else
             return false;

@@ -17,23 +17,23 @@ public class Loot {
     }
     
 
-    int getNSupplies(){
+    public int getNSupplies(){
         return nSupplies;
     }
     
-    int getNWeapons(){
+    public int getNWeapons(){
         return nWeapons;
     }
     
-    int getNShields(){
+    public int getNShields(){
         return nShields;
     }
 
-    int getNHangars(){
+    public int getNHangars(){
         return nHangars;
     }
 
-    int getNMedals(){
+    public int getNMedals(){
         return nMedals;
     }
 

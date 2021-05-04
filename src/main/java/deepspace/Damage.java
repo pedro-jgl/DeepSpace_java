@@ -91,12 +91,12 @@ public class Damage {
 
     }
 
-    void discardShieldBooster(){
+    public void discardShieldBooster(){
         if (nShields > 0)
             nShields--;
     }
 
-    boolean hasNoEffect(){
+    public boolean hasNoEffect(){
         boolean noeffect = false;
 
         if ( getNShields() == 0 && ( ( getNWeapons() == NO_USE && getWeapons().isEmpty() ) || ( getWeapons() == null && getNWeapons() == 0 ) ) )
@@ -105,15 +105,15 @@ public class Damage {
         return noeffect;
     }
 
-    int getNShields(){
+    public int getNShields(){
         return nShields;
     }
 
-    int getNWeapons(){
+    public int getNWeapons(){
         return nWeapons;
     }
 
-    ArrayList<WeaponType> getWeapons(){
+    public ArrayList<WeaponType> getWeapons(){
         return weapons;
 
     }

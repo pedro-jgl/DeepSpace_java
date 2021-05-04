@@ -17,15 +17,15 @@ public class ShieldBooster {
         this.uses = s.uses;
     }
     
-    float getBoost(){
+    public float getBoost(){
         return boost;
     }
     
-    int getUses(){
+    public int getUses(){
         return uses;
     }
     
-    float UseIt(){
+    public float UseIt(){
         final float ZERO_USES = 1.0f;
 
         if(this.uses > 0){

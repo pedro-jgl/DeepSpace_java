@@ -16,16 +16,16 @@ public class SuppliesPackage {
         this (s.ammoPower,s.fuelUnits,s.shieldPower);
     }
 
-    float getAmmoPower(){ 
+    public float getAmmoPower(){ 
         return ammoPower;
     }
         
 
-    float getFuelUnits(){
+    public float getFuelUnits(){
         return fuelUnits;
     }
 
-    float getShieldPower(){
+    public float getShieldPower(){
         return shieldPower;
     }
     

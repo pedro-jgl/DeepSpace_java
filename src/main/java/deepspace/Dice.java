@@ -21,7 +21,7 @@ public class Dice {
         this.generator = new Random();
     }
 
-    int initWithNHangar(){
+    public int initWithNHangar(){
         double prob = this.generator.nextDouble();
 
         if(prob <= NHANGARSPROB){
@@ -31,7 +31,7 @@ public class Dice {
         }
     }
 
-    int initWithNWeapons(){
+    public int initWithNWeapons(){
         final float PROB_CASO1 = 1-2*NWEAPONSPROB;
         final float PROB_CASO2 = PROB_CASO1 + ( (1 - PROB_CASO1) / 2 );
         double prob = this.generator.nextDouble();
@@ -45,7 +45,7 @@ public class Dice {
         }
     }
 
-    int initWithNShields(){
+    public int initWithNShields(){
         double prob = this.generator.nextDouble();
 
         if (prob <= NSHIELDSPROB){
@@ -55,13 +55,12 @@ public class Dice {
         }
     }
 
-    int whoStarts(int nPlayers){
+    public int whoStarts(int nPlayers){
         int player = this.generator.nextInt(nPlayers);
-        //player++;
         return player;
     }
 
-    GameCharacter firstShot(){
+    public GameCharacter firstShot(){
         double prob = this.generator.nextDouble();
         GameCharacter firstshot = GameCharacter.SPACESTATION;
 
@@ -72,7 +71,8 @@ public class Dice {
         return firstshot;
     }
 
-    boolean spaceStationMoves(float speed){
+    public boolean spaceStationMoves(float speed){
+        //Cambiar la float prob con nextFloat();
         double prob = this.generator.nextDouble();
         //Comprobar excepción??
 
