@@ -284,7 +284,7 @@ public class SpaceStation {
             receiveShieldBooster(sh);
         }
 
-        this.nMedals = loot.getNMedals();
+        this.nMedals += loot.getNMedals();
     }
 
     public void setPendingDamage(Damage d) {
