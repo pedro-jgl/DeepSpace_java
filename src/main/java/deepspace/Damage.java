@@ -43,7 +43,7 @@ public class Damage {
         }
 
         index = weaptype.indexOf(t);
-
+        
         return index;
     }
 
@@ -58,11 +58,12 @@ public class Damage {
         if (danio.getNWeapons() != NO_USE){
             if (w.size() < danio.getNWeapons())
                 danio.nWeapons = w.size();
-        } else{
+        } else{            
             ArrayList<Weapon> copiaw = new ArrayList<Weapon>();
             
-            for(int i=0; i<w.size(); i++)
+            for(int i=0; i<w.size(); i++){
                 copiaw.add(w.get(i));
+            }
 
             for (int i = 0; i < danio.getWeapons().size(); ){
                 indice = arrayContainsType(copiaw, danio.getWeapons().get(i));

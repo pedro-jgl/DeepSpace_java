@@ -284,7 +284,7 @@ public class SpaceStation {
             receiveShieldBooster(sh);
         }
 
-        this.nMedals += loot.getNMedals();
+        this.nMedals += loot.getNMedals(); 
     }
 
     public void setPendingDamage(Damage d) {
@@ -306,11 +306,16 @@ public class SpaceStation {
         cadena += "\nFuel Units: " + fuelUnits;
         cadena += "\nMedals: " + nMedals;
         cadena += "\nShieldPower: " + shieldPower;
-
+        
+        cadena += "\nPendingDamage: ";
+        
         if (pendindDamage != null)
-            cadena += "\nPendingDamage: " + pendindDamage.toString();
+            cadena += pendindDamage.toString();
+        
+        cadena += "\nHangar: ";
+        
         if (hangar != null)
-            cadena += "\nHangar: " + hangar.toString();
+            cadena += hangar.toString();
 
         
         cadena += "\nWeapons: \n";
