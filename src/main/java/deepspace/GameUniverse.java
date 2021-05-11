@@ -18,9 +18,6 @@ public class GameUniverse {
         dice = new Dice();
         gameState = new GameStateController();
         currentStationIndex = 0;
-
-        //Se deben inicializar spaceStations y currentStation y current Enemy??
-        //En teoría pone que se deben inicializar todos los atributos de instanca
     }
     
     public CombatResult combat(){
