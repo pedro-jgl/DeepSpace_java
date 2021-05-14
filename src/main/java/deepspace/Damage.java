@@ -14,12 +14,7 @@ public abstract class Damage {
         this.nShields = d.nShields;
     }
 
-    /* No se puede crear una instancia de una clase abstracta
-    DamageToUI getUIversion(){
-        return new DamageToUI(this);
-    }
-    */
-    
+    public abstract DamageToUI getUIversion();
 
     //Este método hace un ajuste ya que el daño puede indicar que se pierdan más
     //shieldboosters de los que el jugador tiene, luego tenemos que ajustarlo

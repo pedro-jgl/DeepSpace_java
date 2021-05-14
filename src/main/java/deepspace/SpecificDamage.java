@@ -75,6 +75,11 @@ public class SpecificDamage extends Damage{
     }
 
     @Override
+    public DamageToUI getUIversion(){
+        return new SpecificDamageToUI(this);
+    }
+
+    @Override
     public String toString(){
         String cadena = super.toString();
             cadena += ", tipos de armas a descartar: ";

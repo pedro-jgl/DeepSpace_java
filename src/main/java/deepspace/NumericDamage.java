@@ -48,6 +48,11 @@ public class NumericDamage extends Damage{
     }
 
     @Override
+    public DamageToUI getUIversion(){
+        return new NumericDamageToUI(this);    
+    }
+
+    @Override
     public String toString(){
         String cadena = super.toString();
         
