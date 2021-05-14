@@ -9,12 +9,23 @@ public abstract class Damage {
         nShields = s;
     }
 
+    /*
     //bien?¿
-    void copy(Damage d){
-        this.nShields = d.nShields;
+    Damage copy(){
+        Damage d = new Damage(this.nShields);
+        return d;
     }
+    */
+
+    public abstract Damage copy();
 
     public abstract DamageToUI getUIversion();
+
+    //Los escudos son un atributo común en las subclases, luego gestionamos su adjust
+    //con este método y lo llamamos en el adjust completo de cada clase
+    public void adjust_shields(ArrayList<ShieldBooster> s){
+        nShields = Math.min(nShields,s.size());
+    }
 
     //Este método hace un ajuste ya que el daño puede indicar que se pierdan más
     //shieldboosters de los que el jugador tiene, luego tenemos que ajustarlo
@@ -33,8 +44,6 @@ public abstract class Damage {
         return nShields;
     }
 
-
-    
 
     public String toString(){
         String cadena = "Número de escudos perdidos: " + getNShields();

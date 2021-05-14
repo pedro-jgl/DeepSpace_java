@@ -12,8 +12,15 @@ public class SpecificDamage extends Damage{
 
     SpecificDamage(SpecificDamage danio){
         super(danio.nShields);
-        //O copiar componente a componente?¿
-        weapons = new ArrayList<WeaponType>(danio.weapons);
+        weapons = new ArrayList<WeaponType>();
+        if (danio.weapons != null)
+            for (int i = 0; i < danio.weapons.size(); i++)
+                weapons.add(danio.weapons.get(i));
+    }
+
+    @Override
+    public SpecificDamage copy(){
+        return new SpecificDamage(this);
     }
 
     @Override
@@ -37,9 +44,8 @@ public class SpecificDamage extends Damage{
     public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
         SpecificDamage danio = new SpecificDamage (this);
         int indice;
-        if (s.size() < danio.getNShields())
-            danio.nShields = s.size();
-
+        
+        danio.adjust_shields(s);
                     
         ArrayList<Weapon> copiaw = new ArrayList<Weapon>();
             

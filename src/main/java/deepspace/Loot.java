@@ -6,6 +6,8 @@ public class Loot {
     private int nShields;
     private int nHangars;
     private int nMedals;
+    private boolean getEfficient;
+    private boolean spaceCity;
 
     
     Loot(int S, int W, int Sh, int H, int M){
@@ -13,7 +15,19 @@ public class Loot {
         nWeapons = W;
         nShields = Sh;
         nHangars = H;
+        nMedals = M; 
+        getEfficient = false;
+        spaceCity = false; 
+    }
+
+    Loot(int S, int W, int Sh, int H, int M, boolean ef, boolean city){
+        nSupplies = S;
+        nWeapons = W;
+        nShields = Sh;
+        nHangars = H;
         nMedals = M;  
+        getEfficient = ef;
+        spaceCity = city;
     }
     
 
@@ -35,6 +49,14 @@ public class Loot {
 
     public int getNMedals(){
         return nMedals;
+    }
+
+    public boolean getEfficient(){
+        return getEfficient;
+    }
+
+    public boolean spaceCity(){
+        return spaceCity;
     }
 
     public String toString() {

@@ -15,6 +15,11 @@ public class NumericDamage extends Damage{
     }
 
     @Override
+    public NumericDamage copy(){
+        return new NumericDamage(this);
+    }
+
+    @Override
     public void discardWeapon(Weapon w){
         if (nWeapons > 0){
             nWeapons--;
@@ -38,12 +43,10 @@ public class NumericDamage extends Damage{
     @Override
     public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
         NumericDamage danio = new NumericDamage (this);
-        if (s.size() < danio.getNShields())
-            danio.nShields = s.size();
 
-        if (w.size() < danio.getNWeapons())
-            danio.nWeapons = w.size();
-        
+        danio.adjust_shields(s);
+        danio.nWeapons = Math.min(danio.nWeapons,w.size());
+                
         return danio;
     }
 
