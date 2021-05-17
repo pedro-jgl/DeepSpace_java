@@ -2,7 +2,7 @@ package deepspace;
 
 import java.util.ArrayList;
 
-public class SpaceStation {
+public class SpaceStation implements SpaceFighter{
     static private final int MAXFUEL = 100;
     static private final float SHIELDLOSSPERUNITSHOT = 0.1f;
     private float ammoPower;
@@ -38,6 +38,31 @@ public class SpaceStation {
         weapons = null;
         hangar = null;
         shieldBoosters = null;
+    }
+
+    SpaceStation(SpaceStation estacion){
+        this.ammoPower = estacion.ammoPower;
+        this.fuelUnits = estacion.fuelUnits;
+        //funciona operador =?¿
+        this.hangar = estacion.hangar;
+        this.nMedals = estacion.nMedals;
+        this.name = estacion.name;
+        this.pendindDamage = estacion.pendindDamage;
+        this.shieldPower = estacion.shieldPower;
+        this.weapons = new ArrayList<>();
+
+        for(int i=0; i<estacion.weapons.size(); i++){
+            this.weapons.add(estacion.weapons.get(i));
+        }
+
+        this.shieldBoosters = new ArrayList<>();
+
+        for(int i=0; i<estacion.shieldBoosters.size(); i++){
+            this.shieldBoosters.add(estacion.shieldBoosters.get(i));
+        }
+
+
+
     }
     
     public void cleanUpMountedItems(){
@@ -95,6 +120,8 @@ public class SpaceStation {
             hangar.removeWeapon(i);
     }
 
+
+    @Override
     public float fire(){
         float factor = 1;
         for(int i=0; i<this.getWeapons().size(); i++){
@@ -203,6 +230,7 @@ public class SpaceStation {
         }
     }
 
+    @Override
     public float protection(){
         float factor = 1;
 
@@ -227,6 +255,7 @@ public class SpaceStation {
         }
     }
 
+    @Override
     public ShotResult receiveShot(float shot){
         float myProtection = this.protection();
         
