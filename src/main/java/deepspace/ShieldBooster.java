@@ -1,6 +1,6 @@
 package deepspace;
 
-public class ShieldBooster {
+public class ShieldBooster implements CombatElement{
     private String name;
     private float boost;
     private int uses;
@@ -21,10 +21,12 @@ public class ShieldBooster {
         return boost;
     }
     
+    @Override
     public int getUses(){
         return uses;
     }
     
+    @Override
     public float UseIt(){
         final float ZERO_USES = 1.0f;
 

@@ -1,6 +1,6 @@
 package deepspace;
 
-public class Weapon {
+public class Weapon implements CombatElement {
     private String name;
     private WeaponType type;
     private int uses;
@@ -19,6 +19,7 @@ public class Weapon {
         return type;
     }
     
+    @Override
     public int getUses(){
         return uses;
     }
@@ -28,6 +29,7 @@ public class Weapon {
 
     }
 
+    @Override
     public float UseIt(){
         final float ZERO_USES = 1.0f;
 
