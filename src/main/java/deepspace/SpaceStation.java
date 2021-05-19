@@ -285,7 +285,7 @@ public class SpaceStation implements SpaceFighter{
         }
     }
 
-    public void setLoot(Loot loot) {
+    public Transformation setLoot(Loot loot) {
         CardDealer dealer = CardDealer.getInstance();
 
         int h = loot.getNHangars();
@@ -314,6 +314,16 @@ public class SpaceStation implements SpaceFighter{
         }
 
         this.nMedals += loot.getNMedals(); 
+
+        if(loot.getEfficient()){
+            return Transformation.GETEFFICIENT;
+        }
+        if(loot.spaceCity()){
+            return Transformation.SPACECITY;
+        }
+        
+        return Transformation.NOTRANSFORM;
+        
     }
 
     public void setPendingDamage(Damage d) {
