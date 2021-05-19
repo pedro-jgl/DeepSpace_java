@@ -8,6 +8,7 @@ public class Dice {
     private final float NSHIELDSPROB;
     private final float NWEAPONSPROB;
     private final float FIRSTSHOTPROB;
+    private final float EXTRAEFFICIENCYPROB = 0.8f;
 
     private Random generator;
     
@@ -89,5 +90,11 @@ public class Dice {
         "\nFIRSTSHOTPROB: " + FIRSTSHOTPROB; 
 
         return cadena;
+    }
+
+    public boolean extraEfficiency(){
+        double prob = this.generator.nextDouble();
+        
+        return prob <= EXTRAEFFICIENCYPROB;
     }
 }
