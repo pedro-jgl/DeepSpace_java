@@ -76,6 +76,13 @@ public class Controller {
             case NOCOMBAT :
               view.noCombatMessage();
               break;
+            case STATIONWINSANDCONVERTS :
+            view.wonCombatAndConvertsMessage();
+            if (game.haveAWinner()) {
+                view.wonGameMessage();
+                System.exit (0);
+            }
+              break;
         }
     }
     
