@@ -12,7 +12,9 @@ public class GameUniverse {
     private EnemyStarShip currentEnemy;
     private ArrayList<SpaceStation> spaceStations;
     private GameStateController gameState;
-    
+    private boolean haveSpaceCity;
+
+
     public GameUniverse(){
         turns = 0;
         dice = new Dice();
@@ -41,7 +43,7 @@ public class GameUniverse {
         boolean enemyWins = false, moves = false;
         Loot aLoot;
         CombatResult combatResult = CombatResult.NOCOMBAT;
-
+        Transformation transformation;
 
         if(state == GameState.BEFORECOMBAT || state == GameState.INIT){
             if (ch==GameCharacter.ENEMYSTARSHIP){
@@ -77,8 +79,17 @@ public class GameUniverse {
                 }
             }else{
                 aLoot = enemy.getLoot();
-                station.setLoot(aLoot);
-                combatResult = CombatResult.STATIONWINS;
+                transformation = station.setLoot(aLoot);
+                
+                if(transformation == Transformation.GETEFFICIENT){
+                    combatResult = CombatResult.STATIONWINSANDCONVERTS;
+                    makeStationEfficient();
+                }else if(transformation == Transformation.NOTRANSFORM){
+                    combatResult = CombatResult.STATIONWINS;
+                }else if(transformation == Transformation.SPACECITY){
+                    combatResult = CombatResult.STATIONWINSANDCONVERTS;
+                    createSpaceCity();
+                }
             }
     
             this.gameState.next(this.turns, this.spaceStations.size());
@@ -204,6 +215,22 @@ public class GameUniverse {
             
         }else
             return false;
+    }
+
+    private void createSpaceCity(){
+        if(haveSpaceCity == false){
+            currentStation = new SpaceCity(currentStation, spaceStations);
+            haveSpaceCity = true;
+        }
+    }
+
+    //bien??¿¿
+    private void makeStationEfficient(){
+        if(dice.extraEfficiency()){
+            currentStation = new BetaPowerEfficientSpaceStation(currentStation);
+        }else{
+            currentStation = new PowerEfficientSpaceStation(currentStation);
+        }
     }
 
     public String toString(){
