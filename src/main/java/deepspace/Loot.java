@@ -61,7 +61,8 @@ public class Loot {
 
     public String toString() {
         String cadena = "NSupplies: " + getNSupplies() + "\n NShields: " + getNShields() + 
-        "\nNHangars: " + getNHangars() + "\nNMedals: " + getNMedals();
+        "\nNHangars: " + getNHangars() + "\nNMedals: " + getNMedals() + "\ngetEfficient: "
+        + getEfficient() + "\nspaceCity: " + spaceCity();
 
         return cadena;
     }
