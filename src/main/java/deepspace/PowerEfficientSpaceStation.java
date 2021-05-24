@@ -23,4 +23,9 @@ public class PowerEfficientSpaceStation extends SpaceStation{
 
         return Transformation.NOTRANSFORM;
     }
+
+    @Override
+    public PowerEfficientSpaceStationToUI getUIversion(){
+        return new PowerEfficientSpaceStationToUI(this);
+    }
 }

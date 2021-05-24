@@ -18,4 +18,9 @@ public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation{
         }else
             return super.fire(); 
     }
+
+    @Override
+    public BetaPowerEfficientSpaceStationToUI getUIversion(){
+        return new BetaPowerEfficientSpaceStationToUI(this);
+    }
 }

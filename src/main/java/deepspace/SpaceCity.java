@@ -3,13 +3,11 @@ package deepspace;
 import java.util.ArrayList;
 
 public class SpaceCity extends SpaceStation{
-    private SpaceStation base;
     private ArrayList<SpaceStation> collaborators;
 
     SpaceCity(SpaceStation base, ArrayList<SpaceStation> rest){
         super(base);
         
-        this.base = base;
         collaborators = new ArrayList<SpaceStation>(rest);        
     }
     
@@ -44,5 +42,10 @@ public class SpaceCity extends SpaceStation{
         super.setLoot(loot);
 
         return Transformation.NOTRANSFORM;
+    }
+
+    @Override
+    public SpaceCityToUI getUIversion(){
+        return new SpaceCityToUI(this);
     }
 }
