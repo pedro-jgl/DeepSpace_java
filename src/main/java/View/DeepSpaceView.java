@@ -25,6 +25,6 @@ public interface DeepSpaceView {
   public void escapeMessage();
   public void wonCombatMessage();
   public void wonGameMessage();
-  public void conversionMessage();
+  public void wonAndConvertCombatMessage();
   public void noCombatMessage();
 }

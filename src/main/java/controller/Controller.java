@@ -77,7 +77,7 @@ public class Controller {
               view.noCombatMessage();
               break;
             case STATIONWINSANDCONVERTS :
-              view.conversionMessage();
+              view.wonAndConvertCombatMessage();
               if (game.haveAWinner()) {
                 view.wonGameMessage();
                 System.exit (0);

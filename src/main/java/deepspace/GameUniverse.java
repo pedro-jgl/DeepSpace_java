@@ -86,7 +86,7 @@ public class GameUniverse {
                     makeStationEfficient();
                 }else if(transformation == Transformation.NOTRANSFORM){
                     combatResult = CombatResult.STATIONWINS;
-                }else if(transformation == Transformation.SPACECITY){
+                }else{
                     combatResult = CombatResult.STATIONWINSANDCONVERTS;
                     createSpaceCity();
                 }
@@ -231,6 +231,9 @@ public class GameUniverse {
         }else{
             currentStation = new PowerEfficientSpaceStation(currentStation);
         }
+        
+        spaceStations.remove(currentStationIndex);
+        spaceStations.add(currentStationIndex, currentStation);
     }
 
     public String toString(){
