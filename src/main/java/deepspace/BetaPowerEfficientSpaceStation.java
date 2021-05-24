@@ -2,25 +2,28 @@ package deepspace;
 
 public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation{
     static final float EXTRAEFFICIENCY = 1.2f;
+    private Dice dice = new Dice();
 
-
-    //Como hacer que una  PowerEfficientSpaceStation  podría transformase en unaBetaPowerEfficientSpaceStation y viceversa
+    //Como hacer que una  PowerEfficientSpaceStation  podría transformase en una BetaPowerEfficientSpaceStation y viceversa
     BetaPowerEfficientSpaceStation(SpaceStation station){
         super(station);
     }
 
     @Override
     public float fire(){
-        Dice dado = new Dice();
-
-        if(dado.extraEfficiency()){
+        if(dice.extraEfficiency())
             return super.fire()*EXTRAEFFICIENCY;
-        }else
-            return super.fire(); 
+        
+        return super.fire();
     }
 
     @Override
     public BetaPowerEfficientSpaceStationToUI getUIversion(){
         return new BetaPowerEfficientSpaceStationToUI(this);
+    }
+
+    @Override
+    public String toString(){
+        return "BETA " + super.toString();
     }
 }
