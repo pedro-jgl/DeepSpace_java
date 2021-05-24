@@ -368,19 +368,17 @@ public class TextMainView implements DeepSpaceView {
   }
   
   @Override
-  public void wonCombatAndConvertsMessage(){
-    showMessageln ("Has GANADO el combate y tu nave espacial se TRANSFORMARÁ. \tDisfruta de tu botín.");
-  }
-
-  @Override
   public void wonGameMessage() {
     showMessageln ("\n\tHAS GANADO LA PARTIDA");
   }
 
   @Override
   public void conversionMessage() {
-    showMessageln("Has GANADO el combate. \nAdemás te has CONVERTIDO. \nDisfruta de tu botín");
-  }
+    if (gameUI.getCurrentEnemy().getLoot().isGetEfficient())
+    showMessageln("Has GANADO el combate. \nAdemás te has CONVERTIDO en una estación EFICIENTE. \nDisfruta de tu botín");
+    else
+    showMessageln("Has GANADO el combate. \nAdemás te has CONVERTIDO en una CIUDAD ESPACIAL. \nDisfruta de tu botín");
+}
 
   @Override
   public void noCombatMessage() {
