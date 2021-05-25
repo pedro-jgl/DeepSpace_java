@@ -375,9 +375,9 @@ public class TextMainView implements DeepSpaceView {
   @Override
   public void wonAndConvertCombatMessage() {
     if (gameUI.getCurrentEnemy().getLoot().isGetEfficient())
-    showMessageln("Has GANADO el combate. \nAdemás te has CONVERTIDO en una estación EFICIENTE. \nDisfruta de tu botín");
+      showMessageln("Has GANADO el combate. \nAdemás te has CONVERTIDO en una estación EFICIENTE. \nDisfruta de tu botín");
     else
-    showMessageln("Has GANADO el combate. \nAdemás te has CONVERTIDO en una CIUDAD ESPACIAL. \nDisfruta de tu botín");
+      showMessageln("Has GANADO el combate. \nAdemás te has CONVERTIDO en una CIUDAD ESPACIAL. \nDisfruta de tu botín");
 }
 
   @Override

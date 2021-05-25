@@ -41,8 +41,8 @@ public class NumericDamage extends Damage{
     }
 
     @Override
-    public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
-        NumericDamage danio = new NumericDamage (this);
+    public NumericDamage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
+        NumericDamage danio = copy();
 
         danio.adjust_shields(s);
         danio.nWeapons = Math.min(danio.nWeapons,w.size());

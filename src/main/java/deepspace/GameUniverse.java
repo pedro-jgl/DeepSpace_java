@@ -20,6 +20,7 @@ public class GameUniverse {
         dice = new Dice();
         gameState = new GameStateController();
         currentStationIndex = 0;
+        haveSpaceCity = false;
     }
     
     public CombatResult combat(){
@@ -87,7 +88,10 @@ public class GameUniverse {
                 }else if(transformation == Transformation.NOTRANSFORM){
                     combatResult = CombatResult.STATIONWINS;
                 }else{
-                    combatResult = CombatResult.STATIONWINSANDCONVERTS;
+                    if(!haveSpaceCity)
+                        combatResult = CombatResult.STATIONWINSANDCONVERTS;
+                    else
+                        combatResult = CombatResult.STATIONWINS;
                     createSpaceCity();
                 }
             }
@@ -222,6 +226,9 @@ public class GameUniverse {
             currentStation = new SpaceCity(currentStation, spaceStations);
             haveSpaceCity = true;
         }
+
+        spaceStations.remove(currentStationIndex);
+        spaceStations.add(currentStationIndex, currentStation);
     }
 
     //bien??¿¿

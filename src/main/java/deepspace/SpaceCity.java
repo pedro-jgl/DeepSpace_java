@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public class SpaceCity extends SpaceStation{
     private ArrayList<SpaceStation> collaborators;
+    private SpaceStation base;
 
-    SpaceCity(SpaceStation base, ArrayList<SpaceStation> rest){
-        super(base);
-        
+    SpaceCity(SpaceStation b, ArrayList<SpaceStation> rest){
+        super(b);
+        this.base = b;
         collaborators = new ArrayList<SpaceStation>(rest);        
     }
+
     
     public ArrayList<SpaceStation> getCollaborators(){
         return collaborators;

@@ -35,9 +35,9 @@ public class SpaceStation implements SpaceFighter{
         shieldPower = supplies.getShieldPower();
         nMedals = 0;
         pendindDamage = null;
-        weapons = null;
+        weapons = new ArrayList<>();
         hangar = null;
-        shieldBoosters = null;
+        shieldBoosters = new ArrayList<>();
     }
 
     SpaceStation(SpaceStation estacion){
@@ -173,12 +173,6 @@ public class SpaceStation implements SpaceFighter{
     }
 
     public SpaceStationToUI getUIversion(){
-        if (weapons == null)
-            weapons = new ArrayList<Weapon>();
-            
-        if (shieldBoosters == null)
-            shieldBoosters = new ArrayList<ShieldBooster>();
-
         return new SpaceStationToUI(this);
     }
 

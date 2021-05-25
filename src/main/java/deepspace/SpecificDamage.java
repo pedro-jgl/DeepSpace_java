@@ -41,8 +41,8 @@ public class SpecificDamage extends Damage{
     }
 
     @Override
-    public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
-        SpecificDamage danio = new SpecificDamage (this);
+    public SpecificDamage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
+        SpecificDamage danio = copy();
         int indice;
         
         danio.adjust_shields(s);

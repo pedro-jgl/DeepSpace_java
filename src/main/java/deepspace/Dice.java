@@ -96,6 +96,6 @@ public class Dice {
     public boolean extraEfficiency(){
         double prob = this.generator.nextDouble();
         
-        return prob <= EXTRAEFFICIENCYPROB;
+        return (prob <= EXTRAEFFICIENCYPROB);
     }
 }
