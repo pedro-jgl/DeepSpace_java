@@ -7,6 +7,7 @@ package View.GUI;
 import View.DeepSpaceView;
 import java.util.ArrayList;
 import controller.Controller;
+import deepspace.GameState;
 
 /**
  *
@@ -14,6 +15,8 @@ import controller.Controller;
  */
 public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     private static MainWindow instance = null;
+    
+    
     
     public static MainWindow getInstance () {
         if (instance == null) {
@@ -101,7 +104,11 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     
     @Override
     public void updateView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //añadir estacion y enemigo
+        
+        GameState state = Controller.getInstance().getState();
+        
+        //dependiendo del estafo se hará una cosa u otra
     }
 
     @Override
