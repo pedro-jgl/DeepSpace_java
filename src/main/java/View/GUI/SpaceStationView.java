@@ -5,6 +5,8 @@
  */
 package View.GUI;
 
+import deepspace.SpaceStationToUI;
+
 /**
  *
  * @author german_padua
@@ -16,6 +18,10 @@ public class SpaceStationView extends javax.swing.JPanel {
      */
     public SpaceStationView() {
         initComponents();
+    }
+    
+    public void setSpaceStationView(SpaceStationToUI sp) {
+        //Implementar
     }
 
     /**

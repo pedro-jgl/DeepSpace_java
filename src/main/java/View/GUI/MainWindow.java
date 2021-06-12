@@ -15,7 +15,9 @@ import deepspace.GameState;
  */
 public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     private static MainWindow instance = null;
-    
+    private GameState state;
+    private SpaceStationView stationView;
+    private EnemyStarShipView enemyView;
     
     
     public static MainWindow getInstance () {
@@ -50,21 +52,94 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        station_panel = new javax.swing.JPanel();
+        enemy_panel = new javax.swing.JPanel();
+        combat_button = new javax.swing.JButton();
+        nextturn_button = new javax.swing.JButton();
+        salir_button = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout station_panelLayout = new javax.swing.GroupLayout(station_panel);
+        station_panel.setLayout(station_panelLayout);
+        station_panelLayout.setHorizontalGroup(
+            station_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+        station_panelLayout.setVerticalGroup(
+            station_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout enemy_panelLayout = new javax.swing.GroupLayout(enemy_panel);
+        enemy_panel.setLayout(enemy_panelLayout);
+        enemy_panelLayout.setHorizontalGroup(
+            enemy_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        enemy_panelLayout.setVerticalGroup(
+            enemy_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 319, Short.MAX_VALUE)
+        );
+
+        combat_button.setText("COMBATIR");
+        combat_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combat_buttonActionPerformed(evt);
+            }
+        });
+
+        nextturn_button.setText("Siguiente Turno");
+
+        salir_button.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1031, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(station_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(enemy_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nextturn_button)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(salir_button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(combat_button, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(72, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 655, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(station_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(enemy_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(combat_button, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nextturn_button)
+                            .addComponent(salir_button))
+                        .addGap(89, 89, 89))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void combat_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combat_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combat_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,11 +179,11 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     
     @Override
     public void updateView() {
-        //añadir estacion y enemigo
-        
+        stationView.setSpaceStationView(Controller.getInstance().getUIversion().getCurrentStation());
+        enemyView.setEnemyView(Controller.getInstance().getUIversion().getCurrentEnemy());
         GameState state = Controller.getInstance().getState();
         
-        //dependiendo del estafo se hará una cosa u otra
+        //dependiendo del estado se hará una cosa u otra
     }
 
     @Override
@@ -163,5 +238,10 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton combat_button;
+    private javax.swing.JPanel enemy_panel;
+    private javax.swing.JButton nextturn_button;
+    private javax.swing.JButton salir_button;
+    private javax.swing.JPanel station_panel;
     // End of variables declaration//GEN-END:variables
 }
