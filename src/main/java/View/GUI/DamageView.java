@@ -5,6 +5,8 @@
  */
 package View.GUI;
 
+import deepspace.DamageToUI;
+
 /**
  *
  * @author german_padua
@@ -17,6 +19,12 @@ public class DamageView extends javax.swing.JPanel {
     public DamageView() {
         initComponents();
     }
+    
+    void setDamageView(DamageToUI damage){
+        nshields_label.setText(String.valueOf(damage.getNShields()));
+        damagew_label.setText(damage.getWeaponInfo());
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,19 +35,54 @@ public class DamageView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        shields_label = new javax.swing.JLabel();
+        weap_label = new javax.swing.JLabel();
+        nshields_label = new javax.swing.JLabel();
+        damagew_label = new javax.swing.JLabel();
+
+        shields_label.setText("Escudos:");
+
+        weap_label.setText("Armas:");
+
+        nshields_label.setText("jLabel3");
+
+        damagew_label.setText("jLabel4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(shields_label)
+                    .addComponent(weap_label))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(damagew_label)
+                    .addComponent(nshields_label))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(shields_label)
+                    .addComponent(nshields_label))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(weap_label)
+                    .addComponent(damagew_label))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel damagew_label;
+    private javax.swing.JLabel nshields_label;
+    private javax.swing.JLabel shields_label;
+    private javax.swing.JLabel weap_label;
     // End of variables declaration//GEN-END:variables
 }

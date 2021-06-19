@@ -32,7 +32,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="fuel_label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="nfueld_label" min="-2" max="-2" attributes="0"/>
+                      <Component id="nfuel_label" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="hangar_label" min="-2" max="-2" attributes="0"/>
@@ -46,18 +46,18 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="weap_label" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+                      <EmptySpace pref="137" max="32767" attributes="0"/>
                       <Component id="nweap_label" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="273" max="32767" attributes="0"/>
+              <EmptySpace pref="197" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="weap_label" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nweap_label" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -75,7 +75,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="fuel_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nfueld_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nfuel_label" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -138,7 +138,7 @@
         <Property name="text" type="java.lang.String" value="jLabel3"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="nfueld_label">
+    <Component class="javax.swing.JLabel" name="nfuel_label">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
       </Properties>

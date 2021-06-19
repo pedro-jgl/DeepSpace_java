@@ -5,6 +5,8 @@
  */
 package View.GUI;
 
+import deepspace.LootToUI;
+
 /**
  *
  * @author german_padua
@@ -16,6 +18,23 @@ public class LootView extends javax.swing.JPanel {
      */
     public LootView() {
         initComponents();
+        
+    }
+    
+    void setLootView(LootToUI loot){
+        nfuel_label.setText(String.valueOf(loot.getnSupplies()));
+        nmedal_label.setText(String.valueOf(loot.getnMedals())); 
+        nweap_label.setText(String.valueOf(loot.getnWeapons()));
+        nshield_label.setText(String.valueOf(loot.getnShields()));
+        shangar_label.setText(String.valueOf(loot.getnHangars()));
+        
+        if (loot.isGetEfficient()){
+            transformText_label.setText("Estación Eficiente");
+        }else if(loot.isSpaceCity()){
+            transformText_label.setText("Ciudad Espacial");
+        }else{
+            transformText_label.setText("No");
+        }
     }
 
     /**
@@ -36,7 +55,7 @@ public class LootView extends javax.swing.JPanel {
         nweap_label = new javax.swing.JLabel();
         nshield_label = new javax.swing.JLabel();
         shangar_label = new javax.swing.JLabel();
-        nfueld_label = new javax.swing.JLabel();
+        nfuel_label = new javax.swing.JLabel();
         nmedal_label = new javax.swing.JLabel();
         transformText_label = new javax.swing.JLabel();
 
@@ -58,7 +77,7 @@ public class LootView extends javax.swing.JPanel {
 
         shangar_label.setText("jLabel3");
 
-        nfueld_label.setText("jLabel4");
+        nfuel_label.setText("jLabel4");
 
         nmedal_label.setText("jLabel5");
 
@@ -82,7 +101,7 @@ public class LootView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(fuel_label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nfueld_label))
+                        .addComponent(nfuel_label))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(hangar_label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -93,14 +112,14 @@ public class LootView extends javax.swing.JPanel {
                         .addComponent(nshield_label))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(weap_label)
-                        .addGap(137, 137, 137)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                         .addComponent(nweap_label)))
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(weap_label)
                     .addComponent(nweap_label))
@@ -115,7 +134,7 @@ public class LootView extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fuel_label)
-                    .addComponent(nfueld_label))
+                    .addComponent(nfuel_label))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medals_label)
@@ -133,7 +152,7 @@ public class LootView extends javax.swing.JPanel {
     private javax.swing.JLabel fuel_label;
     private javax.swing.JLabel hangar_label;
     private javax.swing.JLabel medals_label;
-    private javax.swing.JLabel nfueld_label;
+    private javax.swing.JLabel nfuel_label;
     private javax.swing.JLabel nmedal_label;
     private javax.swing.JLabel nshield_label;
     private javax.swing.JLabel nweap_label;
