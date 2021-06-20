@@ -5,12 +5,17 @@
  */
 package View.GUI;
 
+import controller.Controller;
+import deepspace.HangarToUI;
+import java.util.ArrayList;
+import java.awt.Component;
+
 /**
  *
  * @author pedrojgl
  */
 public class HangarView extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form HangarView
      */
@@ -18,6 +23,53 @@ public class HangarView extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void setHangarView(HangarToUI hangarui){
+        
+        if(hangarui == null){
+            setVisible(false);
+        }
+        else{
+            hangar_panel.removeAll();
+            for(int i=0; i<hangarui.getWeapons().size(); i++){
+                //Se modifica los anteriores al crear uno nuevo?¿
+                WeaponView weapv = new WeaponView();
+                weapv.setWeaponView(hangarui.getWeapons().get(i));
+                hangar_panel.add(weapv);
+            }
+        
+            for(int i=0; i<hangarui.getShieldBoosters().size(); i++){
+                //Se modifica los anteriores al crear uno nuevo?¿
+                ShieldView shieldv = new ShieldView();
+                shieldv.setShieldView(hangarui.getShieldBoosters().get(i));
+                hangar_panel.add(shieldv);
+            }
+        
+        }
+    }
+    
+    void getSelectedInHangar(ArrayList<Integer> weaponsSelected, ArrayList<Integer> shieldsSelected){
+        int numWeapons = Controller.getInstance().getUIversion().getCurrentStation().getHangar().getWeapons().size();
+        int numShields = Controller.getInstance().getUIversion().getCurrentStation().getHangar().getShieldBoosters().size();
+        
+        
+        for(int i=0; i<numWeapons; i++){
+            Component c = hangar_panel.getComponent(i);
+            if(((CombatElementView) c).isSelected()){
+                weaponsSelected.add(i);
+            }
+        }
+        
+        for(int i=0; i<numShields; i++){
+            Component c = hangar_panel.getComponent(i+numWeapons);
+            if(((CombatElementView) c).isSelected()){
+                shieldsSelected.add(i);
+            }
+        }
+    }
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +79,39 @@ public class HangarView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        hangar_panel = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout hangar_panelLayout = new javax.swing.GroupLayout(hangar_panel);
+        hangar_panel.setLayout(hangar_panelLayout);
+        hangar_panelLayout.setHorizontalGroup(
+            hangar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 376, Short.MAX_VALUE)
+        );
+        hangar_panelLayout.setVerticalGroup(
+            hangar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 276, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(hangar_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(hangar_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel hangar_panel;
     // End of variables declaration//GEN-END:variables
 }

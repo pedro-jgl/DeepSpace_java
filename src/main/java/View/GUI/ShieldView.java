@@ -5,6 +5,7 @@
  */
 package View.GUI;
 
+import deepspace.ShieldToUI;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -12,7 +13,7 @@ import java.awt.event.MouseListener;
  *
  * @author pedrojgl
  */
-public class ShieldView extends javax.swing.JPanel implements MouseListener{
+public class ShieldView extends javax.swing.JPanel implements MouseListener, CombatElementView{
     private boolean selected;
     
     /**
@@ -23,10 +24,18 @@ public class ShieldView extends javax.swing.JPanel implements MouseListener{
         selected = false;
     }
     
+    @Override
     public boolean isSelected(){
         return selected;
     }
+    
+    public void setShieldView(ShieldToUI shieldui){
+        boost_label.setText(String.valueOf(shieldui.getBoost()));
+        nuses_label.setText(String.valueOf(shieldui.getUses())); 
+        
+    }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

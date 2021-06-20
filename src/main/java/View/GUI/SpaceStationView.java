@@ -5,14 +5,15 @@
  */
 package View.GUI;
 
+import controller.Controller;
 import deepspace.SpaceStationToUI;
+import java.awt.Component;
+import java.util.ArrayList;
 
-/**
- *
- * @author german_padua
- */
+
 public class SpaceStationView extends javax.swing.JPanel {
     private DamageView pendingDamageView;
+    private HangarView hangarView;
     /**
      * Creates new form StationPanel
      */
@@ -22,6 +23,59 @@ public class SpaceStationView extends javax.swing.JPanel {
     
     public void setSpaceStationView(SpaceStationToUI sp) {
         //Implementar
+        stationName_label.setText(sp.getName());
+        ammoPower_label.setText(String.valueOf(sp.getAmmoPower())); 
+        shieldPower_label.setText(String.valueOf(sp.getShieldPower()));
+        fuel_label.setText(String.valueOf(sp.getFuelUnits()));
+        medals_label.setText(String.valueOf(sp.getnMedals()));
+        
+        pendingDamageView = new DamageView();
+        damage_panel.add(pendingDamageView);
+        
+        hangarView = new HangarView();
+        hangar_panel.add(hangarView);
+        
+        for(int i = 0; i < sp.getWeapons().size(); i++){
+            WeaponView weapv = new WeaponView();
+            weapv.setWeaponView(sp.getWeapons().get(i));
+            fire_panel.add(weapv);
+        }
+        for(int i = 0; i < sp.getShieldBoosters().size(); i++){
+            ShieldView shieldv = new ShieldView();
+            shieldv.setShieldView(sp.getShieldBoosters().get(i));
+            defense_panel.add(shieldv);
+        }
+        
+    }
+    
+    public ArrayList<Integer> getSelectedWeapons(){
+        ArrayList<Integer> weaponsSelected = new ArrayList<>();
+        
+        for(int i=0; i<fire_panel.getComponentCount(); i++){
+            Component c = fire_panel.getComponent(i);
+            
+            if(((CombatElementView) c).isSelected()){
+                weaponsSelected.add(i);
+            }
+        
+        }
+        
+        
+        return weaponsSelected;
+    }
+    
+    public ArrayList<Integer> getSelectedShields(){
+        ArrayList<Integer> shieldsSelected = new ArrayList<>();
+        
+        for(int i=0; i<defense_panel.getComponentCount(); i++){
+            Component c = defense_panel.getComponent(i);
+            
+            if(((CombatElementView) c).isSelected()){
+                shieldsSelected.add(i);
+            }
+        
+        }
+        return shieldsSelected;
     }
 
     /**
@@ -94,8 +148,18 @@ public class SpaceStationView extends javax.swing.JPanel {
         });
 
         descartar_button.setText("Descartar");
+        descartar_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descartar_buttonActionPerformed(evt);
+            }
+        });
 
         descartarHangar_button.setText("Descartar Hangar Completo");
+        descartarHangar_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descartarHangar_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,8 +213,8 @@ public class SpaceStationView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(castigo_label)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(castigo_label, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(stationName_label))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -199,7 +263,41 @@ public class SpaceStationView extends javax.swing.JPanel {
 
     private void equipar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipar_buttonActionPerformed
         // TODO add your handling code here:
+        ArrayList<Integer> weaponsSelected = new ArrayList<>();
+        ArrayList<Integer> shieldsSelected = new ArrayList<>();
+        
+        hangarView.getSelectedInHangar(weaponsSelected, shieldsSelected);
+        
+        Controller.getInstance().mount(weaponsSelected, shieldsSelected);
+        
+        MainWindow.getInstance().updateView();
     }//GEN-LAST:event_equipar_buttonActionPerformed
+
+    private void descartar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descartar_buttonActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Integer> weaponsSelected = getSelectedWeapons();
+        ArrayList<Integer> shieldsSelected = getSelectedShields();
+        
+        
+        Controller.getInstance().discard(Controller.WEAPON, weaponsSelected, shieldsSelected);
+        Controller.getInstance().discard(Controller.SHIELD, weaponsSelected, shieldsSelected);
+        
+        weaponsSelected.clear();
+        shieldsSelected.clear();
+        
+        hangarView.getSelectedInHangar(weaponsSelected, shieldsSelected);
+        Controller.getInstance().discard(Controller.HANGAR, weaponsSelected, shieldsSelected);
+        
+        MainWindow.getInstance().updateView();
+    }//GEN-LAST:event_descartar_buttonActionPerformed
+
+    private void descartarHangar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descartarHangar_buttonActionPerformed
+        // TODO add your handling code here:
+        Controller.getInstance().discardHangar();
+        
+        MainWindow.getInstance().updateView();
+
+    }//GEN-LAST:event_descartarHangar_buttonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

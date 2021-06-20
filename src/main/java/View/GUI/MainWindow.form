@@ -116,11 +116,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Siguiente Turno"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextturn_buttonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="salir_button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salir_buttonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -18,7 +18,7 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     private GameState state;
     private SpaceStationView stationView;
     private EnemyStarShipView enemyView;
-    
+
     
     public static MainWindow getInstance () {
         if (instance == null) {
@@ -90,8 +90,18 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
         });
 
         nextturn_button.setText("Siguiente Turno");
+        nextturn_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextturn_buttonActionPerformed(evt);
+            }
+        });
 
         salir_button.setText("Salir");
+        salir_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salir_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,6 +151,16 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
         // TODO add your handling code here:
     }//GEN-LAST:event_combat_buttonActionPerformed
 
+    private void nextturn_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextturn_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nextturn_buttonActionPerformed
+
+    private void salir_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir_buttonActionPerformed
+        // TODO add your handling code here:
+        ExitWindow exit = new ExitWindow(this);
+        
+    }//GEN-LAST:event_salir_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      * Este método se podrá eliminar más adelante y utilizar nuestra implementación
@@ -183,7 +203,23 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
         enemyView.setEnemyView(Controller.getInstance().getUIversion().getCurrentEnemy());
         GameState state = Controller.getInstance().getState();
         
-        //dependiendo del estado se hará una cosa u otra
+        //dependiendo del estado se mostrará una cosa u otra              
+        switch (state) {
+            case INIT :
+                nextturn_button.setEnabled(false);
+                combat_button.setEnabled(true);
+                break;
+                
+            case BEFORECOMBAT :
+                nextturn_button.setEnabled(false);
+                combat_button.setEnabled(true);
+                break;
+            case AFTERCOMBAT :
+                nextturn_button.setEnabled(true);
+                combat_button.setEnabled(false);
+                break;
+                
+            }       
     }
 
     @Override

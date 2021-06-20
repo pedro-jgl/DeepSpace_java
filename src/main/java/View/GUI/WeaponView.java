@@ -5,6 +5,7 @@
  */
 package View.GUI;
 
+import deepspace.WeaponToUI;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -12,7 +13,7 @@ import java.awt.event.MouseListener;
  *
  * @author pedrojgl
  */
-public class WeaponView extends javax.swing.JPanel implements MouseListener {
+public class WeaponView extends javax.swing.JPanel implements MouseListener, CombatElementView {
     private boolean selected;
     /**
      * Creates new form WeaponView
@@ -22,8 +23,15 @@ public class WeaponView extends javax.swing.JPanel implements MouseListener {
         selected = false;
     }
     
+    @Override
     public boolean isSelected(){
         return selected;
+    }
+    
+    public void setWeaponView(WeaponToUI weaponui){
+        power_label.setText(String.valueOf(weaponui.getPower()));
+        nuses_label.setText(String.valueOf(weaponui.getUses())); 
+        weapType_label.setText(weaponui.getType().toString());
     }
 
     /**
