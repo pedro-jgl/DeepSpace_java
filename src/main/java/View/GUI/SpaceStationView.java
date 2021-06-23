@@ -19,31 +19,41 @@ public class SpaceStationView extends javax.swing.JPanel {
      */
     public SpaceStationView() {
         initComponents();
+        revalidate();
     }
     
     public void setSpaceStationView(SpaceStationToUI sp) {
-        //Implementar
-        stationName_label.setText(sp.getName());
-        ammoPower_label.setText(String.valueOf(sp.getAmmoPower())); 
-        shieldPower_label.setText(String.valueOf(sp.getShieldPower()));
-        fuel_label.setText(String.valueOf(sp.getFuelUnits()));
-        medals_label.setText(String.valueOf(sp.getnMedals()));
-        
-        pendingDamageView = new DamageView();
-        damage_panel.add(pendingDamageView);
-        
-        hangarView = new HangarView();
-        hangar_panel.add(hangarView);
-        
-        for(int i = 0; i < sp.getWeapons().size(); i++){
-            WeaponView weapv = new WeaponView();
-            weapv.setWeaponView(sp.getWeapons().get(i));
-            fire_panel.add(weapv);
-        }
-        for(int i = 0; i < sp.getShieldBoosters().size(); i++){
-            ShieldView shieldv = new ShieldView();
-            shieldv.setShieldView(sp.getShieldBoosters().get(i));
-            defense_panel.add(shieldv);
+        if (sp == null){
+            setVisible(false);
+        }else{
+            stationName_label.setText(sp.getName());
+            ammoPower_label.setText(String.valueOf(sp.getAmmoPower())); 
+            shieldPower_label.setText(String.valueOf(sp.getShieldPower()));
+            fuel_label.setText(String.valueOf(sp.getFuelUnits()));
+            medals_label.setText(String.valueOf(sp.getnMedals()));
+
+            pendingDamageView = new DamageView();
+            pendingDamageView.setDamageView(sp.getPendingDamage());
+            damage_panel.add(pendingDamageView);
+
+            hangarView = new HangarView();
+            hangarView.setHangarView(sp.getHangar());
+            hangar_panel.add(hangarView);
+
+            fire_panel.removeAll();
+            defense_panel.removeAll();
+            for(int i = 0; i < sp.getWeapons().size(); i++){
+                WeaponView weapv = new WeaponView();
+                weapv.setWeaponView(sp.getWeapons().get(i));
+                fire_panel.add(weapv);
+            }
+            for(int i = 0; i < sp.getShieldBoosters().size(); i++){
+                ShieldView shieldv = new ShieldView();
+                shieldv.setShieldView(sp.getShieldBoosters().get(i));
+                defense_panel.add(shieldv);
+            }
+            repaint();
+            revalidate();
         }
         
     }

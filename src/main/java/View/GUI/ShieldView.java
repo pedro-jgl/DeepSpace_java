@@ -30,9 +30,14 @@ public class ShieldView extends javax.swing.JPanel implements MouseListener, Com
     }
     
     public void setShieldView(ShieldToUI shieldui){
-        boost_label.setText(String.valueOf(shieldui.getBoost()));
-        nuses_label.setText(String.valueOf(shieldui.getUses())); 
-        
+        if  (shieldui == null){
+            setVisible(false);
+        } else {
+            boost_label.setText(String.valueOf(shieldui.getBoost()));
+            nuses_label.setText(String.valueOf(shieldui.getUses()));
+            repaint();
+            revalidate();
+        }
     }
 
     

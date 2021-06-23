@@ -15,7 +15,6 @@ import deepspace.GameState;
  */
 public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     private static MainWindow instance = null;
-    private GameState state;
     private SpaceStationView stationView;
     private EnemyStarShipView enemyView;
 
@@ -32,8 +31,10 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
      */
     private MainWindow() {
         initComponents();
-        
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        
+        stationView = new SpaceStationView();
+        enemyView = new EnemyStarShipView();
         
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -149,15 +150,23 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
 
     private void combat_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combat_buttonActionPerformed
         // TODO add your handling code here:
+        if (!combat_button.isOpaque()){
+            Controller.getInstance().combat();
+            updateView();
+        }
     }//GEN-LAST:event_combat_buttonActionPerformed
 
     private void nextturn_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextturn_buttonActionPerformed
         // TODO add your handling code here:
+        if (!nextturn_button.isOpaque()){
+            Controller.getInstance().nextTurn();
+            updateView();
+        }
     }//GEN-LAST:event_nextturn_buttonActionPerformed
 
     private void salir_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir_buttonActionPerformed
         // TODO add your handling code here:
-        ExitWindow exit = new ExitWindow(this);
+        Controller.getInstance().finish(0);
         
     }//GEN-LAST:event_salir_buttonActionPerformed
 
@@ -200,23 +209,31 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     @Override
     public void updateView() {
         stationView.setSpaceStationView(Controller.getInstance().getUIversion().getCurrentStation());
+        station_panel.add(stationView);
         enemyView.setEnemyView(Controller.getInstance().getUIversion().getCurrentEnemy());
+        enemy_panel.add(enemyView);
         GameState state = Controller.getInstance().getState();
         
         //dependiendo del estado se mostrará una cosa u otra              
         switch (state) {
             case INIT :
                 nextturn_button.setEnabled(false);
+                nextturn_button.setOpaque(false);
                 combat_button.setEnabled(true);
+                combat_button.setOpaque(true);
                 break;
                 
             case BEFORECOMBAT :
                 nextturn_button.setEnabled(false);
+                nextturn_button.setOpaque(false);
                 combat_button.setEnabled(true);
+                combat_button.setOpaque(true);
                 break;
             case AFTERCOMBAT :
                 nextturn_button.setEnabled(true);
+                nextturn_button.setOpaque(true);
                 combat_button.setEnabled(false);
+                combat_button.setOpaque(false);
                 break;
                 
             }       
@@ -235,42 +252,50 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
 
     @Override
     public boolean confirmExitMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ExitWindow exit = new ExitWindow(this);
+        return exit.Salir();
     }
 
     @Override
     public void nextTurnNotAllowedMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //No mostramos nada aquí
     }
 
     @Override
     public void lostCombatMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MessageView window = new MessageView(this,"Has PERDIDO el combate. Cumple tu castigo.");
     }
 
     @Override
     public void escapeMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MessageView window = new MessageView(this,"Has logrado escapar. Eres una Gallina Espacial.");
     }
 
     @Override
     public void wonCombatMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MessageView window = new MessageView(this,"Has GANADO el combate. \tDisfruta de tu botín.");
     }
 
     @Override
     public void wonGameMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MessageView window = new MessageView(this,"HAS GANADO LA PARTIDA");
     }
 
     @Override
     public void wonAndConvertCombatMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String s;
+        
+        if (Controller.getInstance().getUIversion().getCurrentEnemy().getLoot().isGetEfficient())
+            s = "Has GANADO el combate. Además te has CONVERTIDO en una estación EFICIENTE. Disfruta de tu botín";
+        else
+            s = "Has GANADO el combate. Además te has CONVERTIDO en una CIUDAD ESPACIAL. Disfruta de tu botín";
+        
+        MessageView window = new MessageView(this,s);
     }
 
     @Override
     public void noCombatMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //No mostramos nada aquí
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

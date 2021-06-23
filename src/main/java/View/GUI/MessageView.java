@@ -7,23 +7,24 @@ package View.GUI;
 
 /**
  *
- * @author german_padua
+ * @author pedrojgl
  */
-public class ExitWindow extends javax.swing.JDialog {
-    private boolean salir;
+public class MessageView extends javax.swing.JDialog {
+
     /**
-     * Creates new form ExitWindow
+     * Creates new form MessageView
      */
-    public ExitWindow(java.awt.Frame parent, boolean modal) {
+    public MessageView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    
     }
     
-    public ExitWindow(java.awt.Frame parent){
-        super(parent, true);
-        salir = false;
+    
+    public MessageView(java.awt.Frame parent, String s){
+        this(parent, true);
+        info_label.setText(s);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,28 +35,17 @@ public class ExitWindow extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        yes_button = new javax.swing.JButton();
-        no_button = new javax.swing.JButton();
-
-        jButton1.setText("jButton1");
+        info_label = new javax.swing.JLabel();
+        ok_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("¿Está seguro que desea salir?");
+        info_label.setText("jLabel1");
 
-        yes_button.setText("Sí");
-        yes_button.addActionListener(new java.awt.event.ActionListener() {
+        ok_button.setText("Aceptar");
+        ok_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yes_buttonActionPerformed(evt);
-            }
-        });
-
-        no_button.setText("No");
-        no_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                no_buttonActionPerformed(evt);
+                ok_buttonActionPerformed(evt);
             }
         });
 
@@ -63,43 +53,32 @@ public class ExitWindow extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ok_button)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(yes_button, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                .addComponent(no_button, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+                .addGap(36, 36, 36)
+                .addComponent(info_label)
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(yes_button)
-                    .addComponent(no_button))
+                .addGap(24, 24, 24)
+                .addComponent(info_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ok_button)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void yes_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yes_buttonActionPerformed
+    private void ok_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ok_buttonActionPerformed
         // TODO add your handling code here:
-        salir = true;
         dispose();
-    }//GEN-LAST:event_yes_buttonActionPerformed
-
-    private void no_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_no_buttonActionPerformed
-        // TODO add your handling code here:
-        salir = false;
-        dispose();
-    }//GEN-LAST:event_no_buttonActionPerformed
+    }//GEN-LAST:event_ok_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,20 +97,20 @@ public class ExitWindow extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ExitWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ExitWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ExitWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ExitWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ExitWindow dialog = new ExitWindow(new javax.swing.JFrame(), true);
+                MessageView dialog = new MessageView(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -142,17 +121,9 @@ public class ExitWindow extends javax.swing.JDialog {
             }
         });
     }
-    
-    boolean Salir(){
-        return salir;
-    }
 
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton no_button;
-    private javax.swing.JButton yes_button;
+    private javax.swing.JLabel info_label;
+    private javax.swing.JButton ok_button;
     // End of variables declaration//GEN-END:variables
 }

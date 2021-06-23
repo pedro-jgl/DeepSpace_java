@@ -22,18 +22,24 @@ public class LootView extends javax.swing.JPanel {
     }
     
     void setLootView(LootToUI loot){
-        nfuel_label.setText(String.valueOf(loot.getnSupplies()));
-        nmedal_label.setText(String.valueOf(loot.getnMedals())); 
-        nweap_label.setText(String.valueOf(loot.getnWeapons()));
-        nshield_label.setText(String.valueOf(loot.getnShields()));
-        shangar_label.setText(String.valueOf(loot.getnHangars()));
-        
-        if (loot.isGetEfficient()){
-            transformText_label.setText("Estación Eficiente");
-        }else if(loot.isSpaceCity()){
-            transformText_label.setText("Ciudad Espacial");
+        if(loot == null){
+            setVisible(false);
         }else{
-            transformText_label.setText("No");
+            nfuel_label.setText(String.valueOf(loot.getnSupplies()));
+            nmedal_label.setText(String.valueOf(loot.getnMedals())); 
+            nweap_label.setText(String.valueOf(loot.getnWeapons()));
+            nshield_label.setText(String.valueOf(loot.getnShields()));
+            shangar_label.setText(String.valueOf(loot.getnHangars()));
+
+            if (loot.isGetEfficient()){
+                transformText_label.setText("Estación Eficiente");
+            }else if(loot.isSpaceCity()){
+                transformText_label.setText("Ciudad Espacial");
+            }else{
+                transformText_label.setText("No");
+            }
+            repaint();
+            revalidate();
         }
     }
 

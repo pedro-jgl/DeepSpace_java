@@ -43,6 +43,9 @@ public class HangarView extends javax.swing.JPanel {
                 shieldv.setShieldView(hangarui.getShieldBoosters().get(i));
                 hangar_panel.add(shieldv);
             }
+            
+            repaint();
+            revalidate();
         
         }
     }

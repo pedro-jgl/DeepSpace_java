@@ -29,9 +29,15 @@ public class WeaponView extends javax.swing.JPanel implements MouseListener, Com
     }
     
     public void setWeaponView(WeaponToUI weaponui){
-        power_label.setText(String.valueOf(weaponui.getPower()));
-        nuses_label.setText(String.valueOf(weaponui.getUses())); 
-        weapType_label.setText(weaponui.getType().toString());
+        if(weaponui == null){
+            setVisible(false);
+        }else{
+            power_label.setText(String.valueOf(weaponui.getPower()));
+            nuses_label.setText(String.valueOf(weaponui.getUses())); 
+            weapType_label.setText(weaponui.getType().toString());
+            repaint();
+            revalidate();
+        }
     }
 
     /**

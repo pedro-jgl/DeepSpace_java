@@ -21,8 +21,14 @@ public class DamageView extends javax.swing.JPanel {
     }
     
     void setDamageView(DamageToUI damage){
-        nshields_label.setText(String.valueOf(damage.getNShields()));
-        damagew_label.setText(damage.getWeaponInfo());
+        if (damage == null){
+            setVisible(false);
+        }else{
+            nshields_label.setText(String.valueOf(damage.getNShields()));
+            damagew_label.setText(damage.getWeaponInfo());
+            repaint();
+            revalidate();
+        }
         
     }
 
