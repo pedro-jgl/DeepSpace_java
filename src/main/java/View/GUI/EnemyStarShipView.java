@@ -9,10 +9,7 @@ import javax.swing.JPanel;
 import deepspace.EnemyToUI;
 import deepspace.GameState;
 
-/**
- *
- * @author german_padua
- */
+
 public class EnemyStarShipView extends javax.swing.JPanel {
     private LootView lootView;
     private DamageView damageView;
@@ -21,7 +18,8 @@ public class EnemyStarShipView extends javax.swing.JPanel {
      */
     public EnemyStarShipView() {
         initComponents();
-        
+        loot_panel.setVisible(true);
+        damage_panel.setVisible(true);
         lootView = new LootView();
         loot_panel.add(lootView);
         
@@ -88,16 +86,7 @@ public class EnemyStarShipView extends javax.swing.JPanel {
 
         shieldPower_label.setText("Numero Defensa");
 
-        javax.swing.GroupLayout loot_panelLayout = new javax.swing.GroupLayout(loot_panel);
-        loot_panel.setLayout(loot_panelLayout);
-        loot_panelLayout.setHorizontalGroup(
-            loot_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        loot_panelLayout.setVerticalGroup(
-            loot_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
+        loot_panel.setMinimumSize(new java.awt.Dimension(12, 12));
 
         jLabel1.setText("Botín");
 
@@ -146,11 +135,11 @@ public class EnemyStarShipView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(shieldPowertext_label)
                     .addComponent(shieldPower_label))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loot_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(loot_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -121,13 +121,13 @@ public class SpaceStationView extends javax.swing.JPanel {
         shieldPower_label = new javax.swing.JLabel();
         fuel_label = new javax.swing.JLabel();
         medals_label = new javax.swing.JLabel();
-        fire_panel = new javax.swing.JScrollPane();
-        defense_panel = new javax.swing.JScrollPane();
-        hangar_panel = new javax.swing.JScrollPane();
-        damage_panel = new javax.swing.JScrollPane();
         equipar_button = new javax.swing.JButton();
         descartar_button = new javax.swing.JButton();
         descartarHangar_button = new javax.swing.JButton();
+        damage_panel = new javax.swing.JPanel();
+        fire_panel = new javax.swing.JPanel();
+        defense_panel = new javax.swing.JPanel();
+        hangar_panel = new javax.swing.JPanel();
 
         fire_label.setText("Potenciadores de Fuego");
 
@@ -201,37 +201,39 @@ public class SpaceStationView extends javax.swing.JPanel {
                             .addComponent(ammoPower_label)
                             .addComponent(fuel_label)
                             .addComponent(medals_label))
-                        .addGap(158, 158, 158)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(castigo_label))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(158, 158, 158)
+                                .addComponent(castigo_label))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(139, 139, 139)
+                                .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hangar_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(equipar_button)
                                 .addGap(79, 79, 79)
                                 .addComponent(descartar_button)
                                 .addGap(71, 71, 71)
                                 .addComponent(descartarHangar_button))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(defense_label)
-                                .addComponent(fire_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-                                .addComponent(defense_panel))
-                            .addComponent(hangar_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(defense_label)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(hangar_label)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hangarSize_label)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hangar2_label))
-                            .addComponent(fire_label))
-                        .addGap(0, 59, Short.MAX_VALUE))))
+                            .addComponent(fire_label)
+                            .addComponent(fire_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(defense_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 72, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(castigo_label, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(stationName_label))
@@ -241,7 +243,7 @@ public class SpaceStationView extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(armas_label)
                             .addComponent(ammoPower_label))
-                        .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(defensa_label)
                             .addComponent(shieldPower_label))
@@ -255,28 +257,28 @@ public class SpaceStationView extends javax.swing.JPanel {
                             .addComponent(medals_label)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(fire_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fire_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(defense_label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(defense_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hangar_label)
                     .addComponent(hangarSize_label)
                     .addComponent(hangar2_label))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hangar_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(equipar_button)
                     .addComponent(descartar_button)
                     .addComponent(descartarHangar_button))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -324,20 +326,20 @@ public class SpaceStationView extends javax.swing.JPanel {
     private javax.swing.JLabel armas_label;
     private javax.swing.JLabel castigo_label;
     private javax.swing.JLabel combustible_label;
-    private javax.swing.JScrollPane damage_panel;
+    private javax.swing.JPanel damage_panel;
     private javax.swing.JLabel defensa_label;
     private javax.swing.JLabel defense_label;
-    private javax.swing.JScrollPane defense_panel;
+    private javax.swing.JPanel defense_panel;
     private javax.swing.JButton descartarHangar_button;
     private javax.swing.JButton descartar_button;
     private javax.swing.JButton equipar_button;
     private javax.swing.JLabel fire_label;
-    private javax.swing.JScrollPane fire_panel;
+    private javax.swing.JPanel fire_panel;
     private javax.swing.JLabel fuel_label;
     private javax.swing.JLabel hangar2_label;
     private javax.swing.JLabel hangarSize_label;
     private javax.swing.JLabel hangar_label;
-    private javax.swing.JScrollPane hangar_panel;
+    private javax.swing.JPanel hangar_panel;
     private javax.swing.JLabel medallas_label;
     private javax.swing.JLabel medals_label;
     private javax.swing.JLabel shieldPower_label;
