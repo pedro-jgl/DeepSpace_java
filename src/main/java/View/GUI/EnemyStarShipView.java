@@ -35,12 +35,20 @@ public class EnemyStarShipView extends javax.swing.JPanel {
             setVisible(false);
         }else{
             enemyname_label.setText(enemyui.getName());
-            ammoPower_label.setText(String.valueOf(enemyui.getAmmoPower())); 
-            shieldPower_label.setText(String.valueOf(enemyui.getShieldPower()));
+            ammoPower_label.setText(Float.toString(enemyui.getAmmoPower()));
+            shieldPower_label.setText(Float.toString(enemyui.getShieldPower()));
+
             lootView.setLootView(enemyui.getLoot());
             damageView.setDamageView(enemyui.getDamage());
-            loot_panel.add(lootView);
-            damage_panel.add(damageView);
+
+            if (Controller.getInstance().getState() == GameState.BEFORECOMBAT || Controller.getInstance().getState() == GameState.INIT) {
+                lootView.setVisible(false);
+                damageView.setVisible(false);
+            } else {
+                lootView.setVisible(true);
+                damageView.setVisible(true);
+            }
+
             repaint();
             revalidate();
         }

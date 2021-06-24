@@ -19,6 +19,8 @@ public class SpaceStationView extends javax.swing.JPanel {
      */
     public SpaceStationView() {
         initComponents();
+        
+        repaint();
         revalidate();
     }
     
@@ -39,7 +41,13 @@ public class SpaceStationView extends javax.swing.JPanel {
             hangarView = new HangarView();
             hangarView.setHangarView(sp.getHangar());
             hangar_panel.add(hangarView);
-
+            
+            if (sp.getHangar() != null) {
+                hangarSize_label.setText(String.valueOf(sp.getHangar().getMaxElements()));
+            } else {
+                hangarSize_label.setText("0");
+            }
+            
             fire_panel.removeAll();
             defense_panel.removeAll();
             for(int i = 0; i < sp.getWeapons().size(); i++){
@@ -52,6 +60,7 @@ public class SpaceStationView extends javax.swing.JPanel {
                 shieldv.setShieldView(sp.getShieldBoosters().get(i));
                 defense_panel.add(shieldv);
             }
+            
             repaint();
             revalidate();
         }

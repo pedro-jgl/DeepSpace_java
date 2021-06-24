@@ -8,12 +8,14 @@ import View.DeepSpaceView;
 import java.util.ArrayList;
 import controller.Controller;
 import deepspace.GameState;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pedrojgl
  */
 public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
+    private static String appName = "deepspace";
     private static MainWindow instance = null;
     private SpaceStationView stationView;
     private EnemyStarShipView enemyView;
@@ -36,6 +38,7 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
         stationView = new SpaceStationView();
         enemyView = new EnemyStarShipView();
         
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -52,116 +55,102 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        station_panel = new javax.swing.JPanel();
-        enemy_panel = new javax.swing.JPanel();
         combat_button = new javax.swing.JButton();
-        nextturn_button = new javax.swing.JButton();
         salir_button = new javax.swing.JButton();
+        enemy_panel = new javax.swing.JPanel();
+        station_panel = new javax.swing.JPanel();
+        nextturn_button = new javax.swing.JButton();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout station_panelLayout = new javax.swing.GroupLayout(station_panel);
-        station_panel.setLayout(station_panelLayout);
-        station_panelLayout.setHorizontalGroup(
-            station_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
-        station_panelLayout.setVerticalGroup(
-            station_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout enemy_panelLayout = new javax.swing.GroupLayout(enemy_panel);
-        enemy_panel.setLayout(enemy_panelLayout);
-        enemy_panelLayout.setHorizontalGroup(
-            enemy_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        enemy_panelLayout.setVerticalGroup(
-            enemy_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 319, Short.MAX_VALUE)
-        );
-
-        combat_button.setText("COMBATIR");
+        combat_button.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        combat_button.setText("C O M B A T I R");
         combat_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combat_buttonActionPerformed(evt);
             }
         });
 
-        nextturn_button.setText("Siguiente Turno");
-        nextturn_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextturn_buttonActionPerformed(evt);
-            }
-        });
-
-        salir_button.setText("Salir");
+        salir_button.setText("SALIR DEL JUEGO");
         salir_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salir_buttonActionPerformed(evt);
             }
         });
 
+        enemy_panel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        station_panel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        nextturn_button.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
+        nextturn_button.setText("SIGUIENTE TURNO");
+        nextturn_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextturn_buttonActionPerformed(evt);
+            }
+        });
+
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(station_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(station_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(enemy_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nextturn_button)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(salir_button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(combat_button, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(72, Short.MAX_VALUE))))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(nextturn_button, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(salir_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(combat_button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(50, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(station_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(enemy_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(combat_button, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                        .addComponent(enemy_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(combat_button, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nextturn_button)
                             .addComponent(salir_button))
-                        .addGap(89, 89, 89))))
+                        .addGap(17, 17, 17))
+                    .addComponent(station_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    } // </editor-fold>//GEN-END:initComponents
 
     private void combat_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combat_buttonActionPerformed
         // TODO add your handling code here:
-        if (!combat_button.isOpaque()){
-            Controller.getInstance().combat();
-            updateView();
-        }
+        Controller.getInstance().combat();
+        updateView();
+        revalidate();
+
     }//GEN-LAST:event_combat_buttonActionPerformed
 
     private void nextturn_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextturn_buttonActionPerformed
         // TODO add your handling code here:
-        if (!nextturn_button.isOpaque()){
-            Controller.getInstance().nextTurn();
-            updateView();
-        }
+        Controller.getInstance().nextTurn();
+        updateView();
+        revalidate();
+        
     }//GEN-LAST:event_nextturn_buttonActionPerformed
 
     private void salir_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir_buttonActionPerformed
@@ -236,7 +225,9 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
                 combat_button.setOpaque(false);
                 break;
                 
-            }       
+            }  
+        
+        repaint();
     }
 
     @Override
@@ -250,52 +241,74 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
         return namesCapt.getNames();
     }
 
+    /**
+     * @brief Pregunta al usuario si quiere salir del programa
+     * @return TRUE si quiere salir | FALSE en otro caso
+     */
     @Override
     public boolean confirmExitMessage() {
-        ExitWindow exit = new ExitWindow(this);
-        return exit.Salir();
+        return (JOptionPane.showConfirmDialog(this, "¿Estás segur@ que deseas salir?", getAppName(), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
     }
-
+    
+    /**
+     * @brief Muestra por pantalla una ventana indicando que no se puede avanzar de turno
+     */
     @Override
     public void nextTurnNotAllowedMessage() {
-        //No mostramos nada aquí
+        JOptionPane.showMessageDialog(this, "No puedes avanzar de turno, \nno has cumplido tu castigo.", getAppName(), JOptionPane.ERROR_MESSAGE);
     }
 
+    /**
+     * @brief Muestra por pantalla una ventana indicando que se ha perdido el combate
+     */
     @Override
     public void lostCombatMessage() {
-        MessageView window = new MessageView(this,"Has PERDIDO el combate. Cumple tu castigo.");
+        JOptionPane.showMessageDialog(this, "Has PERDIDO el combate. \nCumple tu castigo.", getAppName(), JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * @brief Muestra por pantalla una ventana indicando que se ha huido del combate
+     */
     @Override
     public void escapeMessage() {
-        MessageView window = new MessageView(this,"Has logrado escapar. Eres una Gallina Espacial.");
+        JOptionPane.showMessageDialog(this, "Has logrado ESCAPAR. \nEres un gallina espacial.", getAppName(), JOptionPane.INFORMATION_MESSAGE);
     }
-
+    
+    /**
+     * @brief Muestra por pantalla una ventana indicando que se ha ganado el combate
+     */
     @Override
     public void wonCombatMessage() {
-        MessageView window = new MessageView(this,"Has GANADO el combate. \tDisfruta de tu botín.");
+        JOptionPane.showMessageDialog(this, "Has GANADO el combate. \nDisfruta de tu botín.", getAppName(), JOptionPane.INFORMATION_MESSAGE);
     }
-
+    
+    /**
+     * @brief Muestra por pantalla una ventana indicando que se ha ganado el juego
+     */
     @Override
     public void wonGameMessage() {
-        MessageView window = new MessageView(this,"HAS GANADO LA PARTIDA");
+        JOptionPane.showMessageDialog(this, "ENHORABUENA!!. \nHas ganado el juego!!.", getAppName(), JOptionPane.INFORMATION_MESSAGE);
     }
-
+    
+    /**
+     * @brief Muestra por pantalla una ventana indicando que se ha ganado y además que se ha transformado a estación eficiente o a ciudad espacial
+     */
     @Override
     public void wonAndConvertCombatMessage() {
-        String s;
-        
-        if (Controller.getInstance().getUIversion().getCurrentEnemy().getLoot().isGetEfficient())
-            s = "Has GANADO el combate. Además te has CONVERTIDO en una estación EFICIENTE. Disfruta de tu botín";
-        else
-            s = "Has GANADO el combate. Además te has CONVERTIDO en una CIUDAD ESPACIAL. Disfruta de tu botín";
-        
-        MessageView window = new MessageView(this,s);
+        if(Controller.getInstance().getUIversion().getCurrentEnemy().getLoot().isGetEfficient()){
+            JOptionPane.showMessageDialog(this, "Has GANADO el combate. \nAdemás te has CONVERTIDO en una estación EFICIENTE. \nDisfruta de tu botín.", getAppName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Has GANADO el combate. \nAdemás te has CONVERTIDO en una CIUDAD ESPACIAL. \nDisfruta de tu botín.", getAppName(), JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
+    /**
+     * @brief Muestra un mensaje indicando que no se puede combatir en este momento
+     */
     @Override
     public void noCombatMessage() {
-        //No mostramos nada aquí
+        JOptionPane.showMessageDialog(this, "No puedes combatir en este momento.", getAppName(), JOptionPane.ERROR_MESSAGE);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -305,4 +318,8 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     private javax.swing.JButton salir_button;
     private javax.swing.JPanel station_panel;
     // End of variables declaration//GEN-END:variables
+
+    private String getAppName() {
+        return appName;
+    }
 }
