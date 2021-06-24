@@ -27,16 +27,18 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="station_panel" min="-2" pref="690" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="nextturn_button" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="salir_button" min="-2" pref="100" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="nextturn_button" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                          <Component id="salir_button" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="combat_button" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="combat_button" max="32767" attributes="0"/>
-                  <Component id="enemy_panel" max="32767" attributes="0"/>
+                  <Component id="enemy_panel" min="-2" pref="336" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

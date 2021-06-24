@@ -6,6 +6,7 @@
 package View.GUI;
 
 import deepspace.ShieldToUI;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -13,7 +14,7 @@ import java.awt.event.MouseListener;
  *
  * @author pedrojgl
  */
-public class ShieldView extends javax.swing.JPanel implements MouseListener, CombatElementView{
+public class ShieldView extends javax.swing.JPanel implements CombatElementView{
     private boolean selected;
     
     /**
@@ -35,8 +36,14 @@ public class ShieldView extends javax.swing.JPanel implements MouseListener, Com
         } else {
             boost_label.setText(String.valueOf(shieldui.getBoost()));
             nuses_label.setText(String.valueOf(shieldui.getUses()));
+            
+            this.setOpaque(false);
+            this.setBackground(Color.green);
+            
             repaint();
             revalidate();
+            
+            setVisible(true);
         }
     }
 
@@ -55,6 +62,12 @@ public class ShieldView extends javax.swing.JPanel implements MouseListener, Com
         ESCUDO_label = new javax.swing.JLabel();
         boost_label = new javax.swing.JLabel();
         nuses_label = new javax.swing.JLabel();
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         potencia_label.setText("Potencia:");
 
@@ -101,6 +114,13 @@ public class ShieldView extends javax.swing.JPanel implements MouseListener, Com
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        selected = !selected;
+        this.setOpaque(selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ESCUDO_label;
@@ -110,28 +130,4 @@ public class ShieldView extends javax.swing.JPanel implements MouseListener, Com
     private javax.swing.JLabel usos_label;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void mouseClicked(MouseEvent me) {
-        selected = true;
-    }
-
-    @Override
-    public void mousePressed(MouseEvent me) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent me) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent me) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseExited(MouseEvent me) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

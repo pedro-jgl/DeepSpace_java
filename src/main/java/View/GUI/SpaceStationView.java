@@ -36,10 +36,12 @@ public class SpaceStationView extends javax.swing.JPanel {
 
             pendingDamageView = new DamageView();
             pendingDamageView.setDamageView(sp.getPendingDamage());
+            damage_panel.removeAll();
             damage_panel.add(pendingDamageView);
 
             hangarView = new HangarView();
             hangarView.setHangarView(sp.getHangar());
+            hangar_panel.removeAll();
             hangar_panel.add(hangarView);
             
             if (sp.getHangar() != null) {

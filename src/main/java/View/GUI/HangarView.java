@@ -47,6 +47,8 @@ public class HangarView extends javax.swing.JPanel {
             
             repaint();
             revalidate();
+            
+            setVisible(true);
         
         }
     }
@@ -84,17 +86,6 @@ public class HangarView extends javax.swing.JPanel {
     private void initComponents() {
 
         hangar_panel = new javax.swing.JPanel();
-
-        javax.swing.GroupLayout hangar_panelLayout = new javax.swing.GroupLayout(hangar_panel);
-        hangar_panel.setLayout(hangar_panelLayout);
-        hangar_panelLayout.setHorizontalGroup(
-            hangar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
-        );
-        hangar_panelLayout.setVerticalGroup(
-            hangar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
