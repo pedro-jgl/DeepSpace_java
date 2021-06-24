@@ -65,6 +65,8 @@ public class LootView extends javax.swing.JPanel {
         nmedal_label = new javax.swing.JLabel();
         transformText_label = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         weap_label.setText("Armas:");
 
         shield_label.setText("Escudos:");
@@ -120,12 +122,12 @@ public class LootView extends javax.swing.JPanel {
                         .addComponent(weap_label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                         .addComponent(nweap_label)))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(weap_label)
                     .addComponent(nweap_label))
@@ -149,7 +151,7 @@ public class LootView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transform_label)
                     .addComponent(transformText_label))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

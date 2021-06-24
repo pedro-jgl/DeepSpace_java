@@ -63,6 +63,7 @@ public class WeaponView extends javax.swing.JPanel implements CombatElementView 
         power_label = new javax.swing.JLabel();
         nuses_label = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -100,12 +101,12 @@ public class WeaponView extends javax.swing.JPanel implements CombatElementView 
                         .addComponent(tipo_label)
                         .addGap(70, 70, 70)
                         .addComponent(weapType_label)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipo_label)
                     .addComponent(weapType_label))
@@ -117,7 +118,7 @@ public class WeaponView extends javax.swing.JPanel implements CombatElementView 
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usos_label)
                     .addComponent(nuses_label))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

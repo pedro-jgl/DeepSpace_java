@@ -81,6 +81,8 @@ public class EnemyStarShipView extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         damage_panel = new javax.swing.JPanel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         enemytext_label.setText("Enemigo: ");
 
         enemyname_label.setText("Nombre Enemigo");
@@ -103,28 +105,31 @@ public class EnemyStarShipView extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(loot_panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(enemytext_label)
-                        .addGap(18, 18, 18)
-                        .addComponent(enemyname_label))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ammoPowertext_label)
-                        .addGap(18, 18, 18)
-                        .addComponent(ammoPower_label))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(shieldPowertext_label)
-                        .addGap(18, 18, 18)
-                        .addComponent(shieldPower_label))
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(enemytext_label)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(enemyname_label))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(ammoPowertext_label)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(ammoPower_label))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(shieldPowertext_label)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(shieldPower_label))
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(47, 47, 47)
+                            .addComponent(loot_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,12 +149,12 @@ public class EnemyStarShipView extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(loot_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(loot_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
