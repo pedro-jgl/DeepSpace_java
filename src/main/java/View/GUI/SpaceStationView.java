@@ -129,9 +129,11 @@ public class SpaceStationView extends javax.swing.JPanel {
         descartar_button = new javax.swing.JButton();
         descartarHangar_button = new javax.swing.JButton();
         damage_panel = new javax.swing.JPanel();
-        fire_panel = new javax.swing.JPanel();
-        defense_panel = new javax.swing.JPanel();
         hangar_panel = new javax.swing.JPanel();
+        fire_scroll = new javax.swing.JScrollPane();
+        fire_panel = new javax.swing.JPanel();
+        defense_scroll = new javax.swing.JScrollPane();
+        defense_panel = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -188,8 +190,9 @@ public class SpaceStationView extends javax.swing.JPanel {
         });
 
         fire_panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fire_scroll.setViewportView(fire_panel);
 
-        defense_panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        defense_scroll.setViewportView(defense_panel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -219,9 +222,11 @@ public class SpaceStationView extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(139, 139, 139)
                                 .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(50, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(defense_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fire_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(hangar_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(equipar_button)
@@ -236,10 +241,8 @@ public class SpaceStationView extends javax.swing.JPanel {
                                 .addComponent(hangarSize_label)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hangar2_label))
-                            .addComponent(fire_label)
-                            .addComponent(fire_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(defense_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 44, Short.MAX_VALUE))))
+                            .addComponent(fire_label))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,12 +274,12 @@ public class SpaceStationView extends javax.swing.JPanel {
                         .addComponent(damage_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(fire_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fire_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fire_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(defense_label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(defense_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(defense_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hangar_label)
@@ -340,11 +343,13 @@ public class SpaceStationView extends javax.swing.JPanel {
     private javax.swing.JLabel defensa_label;
     private javax.swing.JLabel defense_label;
     private javax.swing.JPanel defense_panel;
+    private javax.swing.JScrollPane defense_scroll;
     private javax.swing.JButton descartarHangar_button;
     private javax.swing.JButton descartar_button;
     private javax.swing.JButton equipar_button;
     private javax.swing.JLabel fire_label;
     private javax.swing.JPanel fire_panel;
+    private javax.swing.JScrollPane fire_scroll;
     private javax.swing.JLabel fuel_label;
     private javax.swing.JLabel hangar2_label;
     private javax.swing.JLabel hangarSize_label;
