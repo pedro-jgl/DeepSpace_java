@@ -39,7 +39,8 @@ public class SpaceStationView extends javax.swing.JPanel {
             pendingDamageView.setDamageView(sp.getPendingDamage());
             damage_panel.removeAll();
             damage_panel.add(pendingDamageView);
-
+            
+            
             hangarView = new HangarView();
             hangarView.setHangarView(sp.getHangar());
             hangar_panel.removeAll();
@@ -300,7 +301,6 @@ public class SpaceStationView extends javax.swing.JPanel {
         hangarView.getSelectedInHangar(weaponsSelected, shieldsSelected);
         
         Controller.getInstance().mount(weaponsSelected, shieldsSelected);
-        
         MainWindow.getInstance().updateView();
     }//GEN-LAST:event_equipar_buttonActionPerformed
 
